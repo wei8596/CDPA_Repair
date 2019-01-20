@@ -1,33 +1,81 @@
 <!doctype html>
 <!--
 	login page
-    290118 by imgc
+    1.0		190118		by imgc
+    尚未找到合適傳送加密密碼的方法
 -->
 <html>
 <head>
 <meta charset="utf-8">
-<title>CDPA 報修系統</title>
+<title>Sign In</title>
+<script type="text/javascript">
+	function hash(x){
+	}
+	function submitForm(){
+		var form = document.getElementById('loginForm');
+		
+		if(form.elements.namedItem('password') != null){
+			if(form.elements.namedItem('hashPassword') != null){
+				form.elements.namedItem('hashPassword').value = hash(form.elements.namedItem('password').value);
+				form.elements.namedItem('password').value = "";
+				return true;
+			}
+		}
+		return false;
+	}
+</script>
+<style type="text/css">
+.box{
+	width: 480px;
+	max-width: 640px;
+	background-color:white;
+	vertical-align:top;
+	display:inline-block;
+	align-content:center;
+	border:1px;
+	padding:10px;
+	margin:3px;
+}
+
+</style>
 </head>
 
-<body>
-<div>
-	<form id="loginForm">
-    	<table>
-        	<tr>
-    			<td><input type="text" readonly value="信箱/e-mail" /></td>
-        		<td><input name="mailbox" type="text"/></td>
-    		</tr>
-            <tr>
-            	<td><input type="text" readonly value="密碼/password" /></td>
-    			<td><input name="password" type="password"/></td>
-            </tr>
-            <tr>
-            	<td><p onClick="location.href='index.html'">註冊/sign up</p></td>
-        		<td><input name="signIn" type="submit" value="登入/sign in"/></td>
-            </tr>
-        </table>
-    </form>
+<body style="background-color:#f5f5f5;">
+<div id="content-1" class="box">
+    <div id="loginController">
+    	<h3>Log In</h3>
+        <form id="loginForm" onSubmit="return submitForm()">
+            <table >
+                <tr>
+                    <td><label>信箱 e-mail</label></td>
+                    <td><input name="mailbox" type="text" required/></td>
+                </tr>
+                <tr>
+                    <td><label>密碼 password</label></td>
+                    <td><input name="password" type="password" required/></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input name="submit" type="submit" value="登入/sign in"/></td>
+                </tr>
+            </table>
+            <input type="hidden" name="hashPassword" value=""/>
+        </form>
+        <span id="info" style="color:red">&nbsp;</span>
+    </div>
+    <div>
+        <a href="" onClick="">註冊 Register</a>
+        <br/>
+        <a href="" onClick="">忘記密碼 Forgot password?</a>
+    </div>
 </div>
-
+<div id="content-2" class="box">
+  <div id="loginDescription">
+    	<h3>Description</h3>
+        <div id="description"><p>
+        	報修前請先詳閱<a href="" target="_blank">自我檢查方法</a>確定報修前需進行登入，首次登入需進行註冊，帳號用於協助同學確認報修單處理狀況及更新報修單，CDPA跑單時間通常為平常日19:00~21:00，視當周CDPA服務同學的工作而定，報修後可能須等待一至兩周。
+        </p></div>
+  </div>
+</div>
 </body>
 </html>

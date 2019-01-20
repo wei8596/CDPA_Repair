@@ -1,0 +1,103 @@
+<!doctype html>
+<html>
+<!--
+	register page
+    1.0		190121		by imgc
+    
+    尚未找到合適傳送加密密碼的方法
+-->
+<head>
+<meta charset="utf-8">
+<title>Register</title>
+<script type="text/javascript">
+	function hash(x){
+		//未寫 
+		return x;
+	}
+	function checkForm(){
+		var password_min = 4;
+		var password_max = 24;
+		var pattern = new RegExp("[0-9,a-z]{4,12}");
+		var form = document.getElementById('registerForm');
+		if(form.elements.namedItem('password').value.length < password_min || form.elements.namedItem('password').value.length > password_max){
+			document.getElementById('info').innerHTML = "密碼應為4~24字";
+			return false;
+		}
+		if(!pattern.test(form.elements.namedItem('password').value)){
+			document.getElementById('info').innerHTML = "password should only contain 0-9,a-z";
+			return false;
+		}
+		if(form.elements.namedItem('password').value != form.elements.namedItem('verify').value){
+			document.getElementById('info').innerHTML = "password and verify must be same";
+			return false;
+		}
+		document.getElementById('info').innerHTML = "&nbsp;";
+		return true;
+	}
+	function submitForm(){
+		if(checkForm()){
+			form.elements.namedItem('hashPassword').value = hash(form.elements.namedItem('password').value);
+			form.elements.namedItem('password').value = "";
+			return true;
+		}
+		return false;
+	}
+</script>
+<style type="text/css">
+.box{
+	width: 480px;
+	max-width: 640px;
+	background-color:white;
+	vertical-align:top;
+	display:inline-block;
+	align-content:center;
+	border:1px;
+	padding:10px;
+	margin:3px;
+}
+
+</style>
+</head>
+
+<body style="background-color:#f5f5f5">
+<div id="content-1" class="box">
+    <div id="registerController">
+    	<h3>Sign Up</h3>
+        <form id="registerForm" onInput="checkForm()" onSubmit="return submitForm()">
+            <table >
+                <tr>
+                    <td><label>信箱 e-mail</label></td>
+                    <td><input name="mailbox" type="text" required/></td>
+                </tr>
+                <tr>
+                    <td><label>密碼 password</label></td>
+                    <td><input name="password" type="password" pattern="[0-9,a-z]{4,12}" placeholder="only contain 0-9,a-z" required/></td>
+                </tr>
+                <tr>
+                    <td><label>密碼確認 verify </label></td>
+                    <td><input name="verify" type="password" pattern="[0-9,a-z]{4,24}" placeholder="retype your password" required/></td>
+                </tr>
+                
+                <tr>
+                    <td></td>
+                    <td><input name="submit" type="submit" value="登入/sign in"/></td>
+                </tr>
+            </table>
+            <input type="hidden" name="hashPassword" value=""/>
+        </form>
+        <span id="info" style="color:red">&nbsp;</span>
+    </div>
+</div>
+<div id="content-2" class="box">
+  <div id="registerDescription">
+    	<h3>Description</h3>
+        <p>
+        	註冊信箱及密碼即為未來報修系統上登入之帳號密碼，請務必熟記。
+        </p>
+        <p>
+        	密碼限4-24字元。
+        </p>
+  </div>
+</div>
+</body>
+</html>
