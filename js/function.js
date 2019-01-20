@@ -1,7 +1,7 @@
 var urlParams = [];	// URL parameters
 var lang = -1;		// 0: zh, 1: en
-var action = -1;	// 0: RepairStatus, 1: BannedList, 2: Tutorial
-var type = -1;		// 0: QueryIPInfomation, 1: QueryMACAddress, 2: QueryIPConflict
+var action = -1;	// 0: Repair, 1: RepairStatus, 2: BannedList, 3: Tutorial
+var type = -1;		// 0: Eazy, 1: QueryMACAddress, 2: QueryIPConflict
 
 /*
  * get URL parameters
@@ -27,25 +27,40 @@ function getQueryParam() {
 				}
 			}
 			else if(paramsVal[0] == "action") {
-				if(paramsVal[1] == "RepairStatus") {
+				if(paramsVal[1] == "Repair") {
 					action = 0;
+					$(document).ready(function() {
+						$("#content").load("form.html");
+					});
 				}
-				else if(paramsVal[1] == "BannedList") {
+				else if(paramsVal[1] == "RepairStatus") {
 					action = 1;
 				}
-				else if(paramsVal[1] == "Tutorial") {
+				else if(paramsVal[1] == "BannedList") {
 					action = 2;
+				}
+				else if(paramsVal[1] == "Tutorial") {
+					action = 3;
 				}
 			}
 			else if(paramsVal[0] == "type") {
-				if(paramsVal[1] == "QueryIPInfomation") {
+				if(paramsVal[1] == "Eazy") {
 					type = 0;
+					$(document).ready(function() {
+						$("#content").load("trouble_shooting.html");
+					});
 				}
 				else if(paramsVal[1] == "QueryMACAddress") {
 					type = 1;
+					$(document).ready(function() {
+						$("#content").load("queryMAC.html");
+					});
 				}
 				else if(paramsVal[1] == "QueryIPConflict") {
 					type = 2;
+					$(document).ready(function() {
+						$("#content").load("queryIPConflict.html");
+					});
 				}
 			}
 		}
@@ -53,4 +68,3 @@ function getQueryParam() {
 }
 
 getQueryParam();
-alert(lang.toString() + action.toString() + type.toString());
