@@ -1,50 +1,22 @@
-<!doctype html>
 <!--
 	login page
     1.0		190118		by imgc
-    尚未找到合適傳送加密密碼的方法
+    1.1		190121		重新調整表單
+    未來考慮用ajax處理傳值
 -->
+<!doctype html>
 <html>
 <head>
 <meta charset="utf-8">
 <title>Sign In</title>
-<script type="text/javascript">
-	function hash(x){
-	}
-	function submitForm(){
-		var form = document.getElementById('loginForm');
-		
-		if(form.elements.namedItem('password') != null){
-			if(form.elements.namedItem('hashPassword') != null){
-				form.elements.namedItem('hashPassword').value = hash(form.elements.namedItem('password').value);
-				form.elements.namedItem('password').value = "";
-				return true;
-			}
-		}
-		return false;
-	}
-</script>
-<style type="text/css">
-.box{
-	width: 480px;
-	max-width: 640px;
-	background-color:white;
-	vertical-align:top;
-	display:inline-block;
-	align-content:center;
-	border:1px;
-	padding:10px;
-	margin:3px;
-}
-
-</style>
+<link rel="stylesheet" type="text/css" href="assets/css/imgc.css"></link>
 </head>
 
 <body style="background-color:#f5f5f5;">
 <div id="content-1" class="box">
-    <div id="loginController">
+    <div id="loginController"><!-- 填表區域 -->
     	<h3>Log In</h3>
-        <form id="loginForm" onSubmit="return submitForm()">
+        <form id="loginForm" onInput="checkForm('login',this)"  onSubmit="return submitForm('login',this)"><!-- 登入表單 -->
             <table >
                 <tr>
                     <td><label>信箱 e-mail</label></td>
@@ -52,15 +24,13 @@
                 </tr>
                 <tr>
                     <td><label>密碼 password</label></td>
-                    <td><input name="password" type="password" required/></td>
+                    <td><input name="password" type="password" pattern="[0-9,a-z]{4,32}" required/></td>
                 </tr>
                 <tr>
                     <td></td>
                     <td><input name="submit" type="submit" value="登入/sign in"/></td>
                 </tr>
             </table>
-            <input type="hidden" name="hashPassword" value=""/>
-        </form>
         <span id="info" style="color:red">&nbsp;</span>
     </div>
     <div>
@@ -70,12 +40,19 @@
     </div>
 </div>
 <div id="content-2" class="box">
-  <div id="loginDescription">
+  <div id="loginDescription"><!-- 補充說明區域 -->
     	<h3>Description</h3>
         <div id="description"><p>
         	報修前請先詳閱<a href="" target="_blank">自我檢查方法</a>確定報修前需進行登入，首次登入需進行註冊，帳號用於協助同學確認報修單處理狀況及更新報修單，CDPA跑單時間通常為平常日19:00~21:00，視當周CDPA服務同學的工作而定，報修後可能須等待一至兩周。
         </p></div>
   </div>
 </div>
+
+<!--
+script
+-->
+<script type="text/javascript" src="assets/js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="assets/js/md5.js"></script>
+<script type="text/javascript" src="assets/js/login.js"></script>
 </body>
 </html>
