@@ -108,18 +108,12 @@ function getQueryParam() {
 			else if(paramsVal[0] == "action") {
 				if(paramsVal[1] == "Repair") {
 					action = 0;
-					$(document).ready(function() {
-						$("#content").load("form.html");
-					});
 				}
 				else if(paramsVal[1] == "RepairStatus") {
 					action = 1;
 				}
 				else if(paramsVal[1] == "BannedList") {
 					action = 2;
-					$(document).ready(function() {
-						$("#content").load("banned.html");
-					});
 				}
 				else if(paramsVal[1] == "Tutorial") {
 					action = 3;
@@ -128,23 +122,55 @@ function getQueryParam() {
 			else if(paramsVal[0] == "type") {
 				if(paramsVal[1] == "Eazy") {
 					type = 0;
-					$(document).ready(function() {
-						$("#content").load("trouble_shooting.html");
-					});
 				}
 				else if(paramsVal[1] == "QueryMACAddress") {
 					type = 1;
-					$(document).ready(function() {
-						$("#content").load("queryMAC.html");
-					});
 				}
 				else if(paramsVal[1] == "QueryIPConflict") {
 					type = 2;
-					$(document).ready(function() {
-						$("#content").load("queryIPConflict.html");
-					});
 				}
 			}
+		}
+		// page loading
+		switch(action) {
+			case 0:
+				$(document).ready(function() {
+					$("#content").load("form.html");
+				});
+				break;
+			case 1:
+				break;
+			case 2:
+				$(document).ready(function() {
+					$("#content").load("banned.html");
+				});
+				break;
+			case 3:
+				switch(type) {
+					case 0:
+						if(lang == "zh") {
+							$(document).ready(function() {
+								$("#content").load("trouble_shooting.html");
+							});
+						}
+						else {
+							$(document).ready(function() {
+								$("#content").load("en/trouble_shooting.html");
+							});
+						}
+						break;
+					case 1:
+						$(document).ready(function() {
+							$("#content").load("queryMAC.html");
+						});
+						break;
+					case 2:
+						$(document).ready(function() {
+							$("#content").load("queryIPConflict.html");
+						});
+						break;
+				}
+				break;
 		}
 	}
 }
