@@ -1,14 +1,19 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <!--
 	home page
-	290119 by WeiN
+	290119 create				by WeiN
+	290120 load other pages		by WeiN
+	290121 bilingual interface	by WeiN
 -->
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta content="no-cache" http-equiv="Cache-Control"/>
 		<title>中山大學宿網報修系統</title>
 		<meta content="NSYSU-CDPA" name="author"/>
+		<!-- Font Awesome CSS -->
+		<link rel="stylesheet" href="assets/css/all.css">
 	</head>
 	<body>
 		<!-- Title -->
@@ -19,39 +24,39 @@
 		<!-- Navigation Bar -->
 		<div id="navbar">
 		<ul class="level1">
-		<li><a href="?lang=en">English Version</a></li>
-		<li><a href="login.html">登入</a></li>
-		<li><a href="?action=Repair&amp;lang=zh">申請維修</a></li>
-		<li><a href="?action=RepairStatus&amp;lang=zh">查詢進度</a></li>
-		<li class="submenu">封鎖查詢
+		<li id="lang"><a></a></li>
+		<li><a id="login" href="login.html"></a></li>
+		<li id="repair"><a></a></li>
+		<li id="repairstatus"><a></a></li>
+		<li id="bannedlist"><a></a></li>
+		<li id="tutorial" class="submenu"><span>各式教學</span>
 			<ul class="level2">
-				<li><a href="?action=BannedList&amp;lang=zh">網孔封鎖列表</a></li>
+				<li id="eazy"><a></a></li>
+				<li id="lookupIP"><a href="http://www.cdpa.nsysu.edu.tw/lookUpIP.php" target="_blank"></a></li>
+				<li id="queryMAC"><a></a></li>
+				<li id="queryIPConflict"><a></a></li>
 			</ul>
 		</li>
-		<li class="submenu">各式教學
-			<ul class="level2">
-				<li><a href="?action=Tutorial&amp;type=Eazy&amp;lang=zh">簡易問題排除</a></li>
-				<li><a href="http://www.cdpa.nsysu.edu.tw/lookUpIP.php" target="_blank">查詢IP分配表</a></li>
-				<li><a href="?action=Tutorial&amp;type=QueryMACAddress&amp;lang=zh">查詢網路卡號</a></li>
-				<li><a href="?action=Tutorial&amp;type=QueryIPConflict&amp;lang=zh">查詢IP佔用卡號</a></li>
-			</ul>
-		</li>
-		<li><a href="?lang=zh">回到首頁</a></li>
+		<li id="home"><a></a></li>
 		</ul>
 		</div>
 		
 		<!-- Content -->
-		<a name="top"></a>
 		<div id="content">
+		<ul>
+			<li id="content1"><p></p></li>
+			<li id="content2"><p></p></li>
+		</ul>
 		</div>
-		<a href="#top">Go to top</a>
+		
+		<a href="#content"><i class="fa fa-angle-up fa-2x"></i></a>
 		
 		<!-- Footer -->
 		<div class="footer"><a href="http://www.cdpa.nsysu.edu.tw" title="CDPA Website" target="_blank">NSYSU-CDPA</a> &copy; 2019</div>
 		
 		<!-- Scripts -->
-		<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
-		<script type="text/javascript" src="js/function.js"></script>
+		<script type="text/javascript" src="assets/js/jquery-3.3.1.min.js"></script>
+		<script type="text/javascript" src="assets/js/function.js"></script>
 		
 	</body>
 </html>
