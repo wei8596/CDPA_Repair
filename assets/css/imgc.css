@@ -1,0 +1,14 @@
+@charset "utf-8";
+/* CSS Document */
+.box{
+	width: 480px;
+	max-width: 640px;
+	background-color:white;
+	vertical-align:top;
+	display:inline-block;
+	align-content:center;
+	border:1px;
+	padding:10px;
+	margin:3px;
+}
+
