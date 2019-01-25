@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
@@ -6,6 +6,8 @@
 	<title>CDPA 報修單</title>
 </head>
 <!--
+	2019/1/25 chia-chih updated
+	修正form 的字元集為UTF-8
 	2019/1/20 chia-chih updated
 	此頁面只提供報修的介面，不提供已報修的單子的查詢、修改...等。
 	已做: 
@@ -15,8 +17,8 @@
 -->
 <body>
 <div class="fill_form">
-	<form id="repairForm">
-		宿舍棟別:<br/>
+	<form id="repairForm" accept-charset="UTF-8">
+		宿舍棟別:<br>
 		<select name="dorm">
 			<option value="A" selected="A">A</option>
 			<option value="B">B</option>
@@ -32,22 +34,22 @@
 			<option value="three">武三</option>
 			<option value="four">武四</option>
 			<option value="three">國際村</option>
-		</select><br/>
+		</select><br>
 
-		房號:<br/>
-		<input type="number" name="roomNo" min="1" max="999" value="1"/><br/>
-		床號:<br/>
-		<input type="number" name="bedNo" min="1" max="4" value="1"/><br/>
-		IP:<br/>
-		<input type="text" name="IP" required="required" pattern="^([0-9]{1,3}\.){3}[0-9]{1,3}$" value="140.117.11.1"/><br/>
-		MAC:<br/>
-		<input type="text"  name="MAC" pattern="^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$" value="00-00-00-00-00-00"/><br/>
-		問題描述:<br/>
-		<input type="text" name="problem"/><br/>
+		房號:<br>
+		<input type="number" name="roomNo" min="1" max="999" value="1"><br>
+		床號:<br>
+		<input type="number" name="bedNo" min="1" max="4" value="1"><br>
+		IP:<br>
+		<input type="text" name="IP" required pattern="^([0-9]{1,3}\.){3}[0-9]{1,3}$" value="140.117.11.1"><br>
+		MAC:<br>
+		<input type="text"  name="MAC" pattern="^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$" value="00-00-00-00-00-00" ><br>
+		問題描述:<br>
+		<input type="text" name="problem"><br>
 
 
-		<input type="submit" value="Submit"/>
-		<input type="reset"/>
+		<input type="submit" value="Submit">
+		<input type="reset">
 	</form>
 </div>
 </body>
