@@ -78,8 +78,8 @@ function translate(lang) {
 	$(document).ready(function() {
 		$("#lang a").attr("href", "?lang=" + transLang);
 		$("#lang a").text(trans[0][transLang]);
-		$("#login").attr("href", "?action=Login&lang=" + lang);
-		$("#login").text(trans[1][lang]);
+		$("#login a").attr("href", "?action=Login&lang=" + lang);
+		$("#login a").text(trans[1][lang]);
 		$("#repair a").attr("href", "?action=Repair&lang=" + lang);
 		$("#repair a").text(trans[2][lang]);
 		$("#repairstatus a").attr("href", "?action=RepairStatus&lang=" + lang);
@@ -142,7 +142,7 @@ function getQueryParam() {
 						action = ACTION.Login;
 						break;
 					case "Register":
-						action = ACTION.Login;
+						action = ACTION.Register;
 						break;
 					case "Forget":
 						action = ACTION.Forget;
