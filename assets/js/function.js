@@ -1,7 +1,25 @@
 var urlParams = [];	// URL parameters
 var lang = "zh";	// zh(default) | en
-var action = -1;	// 0: Repair, 1: RepairStatus, 2: BannedList, 3: Tutorial
-var type = -1;		// 0: Eazy, 1: QueryMACAddress, 2: QueryIPConflict
+const ACTION = {
+	None : -1,
+	Repair : 0,
+	RepairStatus : 1,
+	BannedList : 2,
+	Tutorial : 3,
+	Login : 4,		//登入
+	Register : 5,	//註冊
+	Forget : 6,		//忘記密碼
+	Home : 7		//登入成功後首頁
+};
+var action = ACTION.None;	// 0: Repair, 1: RepairStatus, 2: BannedList, 3: Tutorial, ...參照ACTION
+
+const TYPE = {
+	None : -1,
+	Eazy : 0,
+	QueryMACAddress : 1,
+	QueryIPConflict : 2
+};
+var type = TYPE.None;		// 0: Eazy, 1: QueryMACAddress, 2: QueryIPConflict
 
 var trans = [
 	{
@@ -60,6 +78,7 @@ function translate(lang) {
 	$(document).ready(function() {
 		$("#lang a").attr("href", "?lang=" + transLang);
 		$("#lang a").text(trans[0][transLang]);
+		$("#login").attr("href", "?action=Login&lang=" + lang);
 		$("#login").text(trans[1][lang]);
 		$("#repair a").attr("href", "?action=Repair&lang=" + lang);
 		$("#repair a").text(trans[2][lang]);
@@ -106,48 +125,63 @@ function getQueryParam() {
 				}
 			}
 			else if(paramsVal[0] == "action") {
-				if(paramsVal[1] == "Repair") {
-					action = 0;
-				}
-				else if(paramsVal[1] == "RepairStatus") {
-					action = 1;
-				}
-				else if(paramsVal[1] == "BannedList") {
-					action = 2;
-				}
-				else if(paramsVal[1] == "Tutorial") {
-					action = 3;
+				switch(paramsVal[1]){
+					case "Repair":
+						action = ACTION.Repair;
+						break;
+					case "RepairStatus":
+						action = ACTION.RepairStatus;
+						break;
+					case "BannedList":
+						action = ACTION.BannedList;
+						break;
+					case "Tutorial":
+						action = ACTION.Tutorial;
+						break;
+					case "Login":
+						action = ACTION.Login;
+						break;
+					case "Register":
+						action = ACTION.Login;
+						break;
+					case "Forget":
+						action = ACTION.Forget;
+						break;
+					case "Home":
+						action = ACTION.Home;
+						break;
 				}
 			}
 			else if(paramsVal[0] == "type") {
 				if(paramsVal[1] == "Eazy") {
-					type = 0;
+					type = TYPE.Eazy;
 				}
 				else if(paramsVal[1] == "QueryMACAddress") {
-					type = 1;
+					type = TYPE.QueryMACAddress;
 				}
 				else if(paramsVal[1] == "QueryIPConflict") {
-					type = 2;
+					type = TYPE.QueryIPConflict;
 				}
 			}
 		}
 		// page loading
 		switch(action) {
-			case 0:
+			case ACTION.Repair:
 				$(document).ready(function() {
 					$("#content").load("form.html");
 				});
 				break;
-			case 1:
+			case ACTION.RepairStatus:
+				//
 				break;
-			case 2:
+			case ACTION.BannedList:
 				$(document).ready(function() {
 					$("#content").load("banned.html");
 				});
 				break;
-			case 3:
+			case ACTION.Tutorial:
 				switch(type) {
-					case 0:
+					case TYPE.Eazy:
 						if(lang == "zh") {
 							$(document).ready(function() {
 								$("#content").load("trouble_shooting.html");
@@ -159,17 +193,37 @@ function getQueryParam() {
 							});
 						}
 						break;
-					case 1:
+					case TYPE.QueryMACAddress:
 						$(document).ready(function() {
 							$("#content").load("queryMAC.html");
 						});
 						break;
-					case 2:
+					case TYPE.QueryIPConflict:
 						$(document).ready(function() {
 							$("#content").load("queryIPConflict.html");
 						});
 						break;
 				}
+				break;
+			case ACTION.Login:
+				$(document).ready(function() {
+					$("#content").load("login.html");
+				});
+				break;
+			case ACTION.Register:
+				$(document).ready(function() {
+					$("#content").load("register.html");
+				});
+				break;
+			case ACTION.Forget:
+				$(document).ready(function() {
+					$("#content").load("forget.html");
+				});
+				break;
+			case ACTION.Home:
+				$(document).ready(function() {
+					$("#content").load("home.html");
+				});
 				break;
 		}
 	}
