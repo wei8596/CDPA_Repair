@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta content="no-cache" http-equiv="Cache-Control"/>
+
+	<!--Scripts-->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="asset/js/form_status.js"></script>
+	<!--Title-->
+	<title>報修單狀態</title>
+</head>
+<!--
+	報修單狀態(網管)
+
+	date		contributor		description		version
+	2019/1/27	chia-chih		新增回覆敘述	1.0.1
+
+	2019/1/25	chia-chih 		第一版			1.0.0
+
+-->
+<body>
+	<div class="form_status">
+		<table>
+			<tr>
+				<th>基本資訊</th>
+			</tr>
+			<tr>
+				<td>宿舍棟別</td>
+				<td>{{dorm}}</td>
+			</tr>
+			<tr>
+				<td>房號</td>
+				<td>{{roomNo}}</td>
+			</tr>
+			<tr>
+				<td>床號</td>
+				<td>{{bedNo}}</td>
+			</tr>
+			<tr>
+				<td>IP 位址</td>
+				<td>{{IP}}</td>
+			</tr>
+			<tr>
+				<td>MAC 位址</td>
+				<td>{{MAC}}</td>
+			</tr>
+			<tr>
+				<td>問題描述</td>
+				<td>{{problem}}</td>
+			</tr>
+			<tr>
+				<td>報修單狀態</td>
+				<td>{{status}}</td>
+			</tr>
+			<tr>
+				<td>網管回覆</td>
+				<td>{{reply}}</td>
+			</tr>
+		</table>
+	</div>
+	<br>
+	<div class="update_form">
+		<form  accept-charset="UTF-8">
+			狀態更新:<br>
+			<input type="radio" name="status" id="open" value="open">開啟中<br>
+			<input type="radio" name="status" id="processing" value="processing">處理中<br>
+			<input type="radio" name="status" id="closed" value="closed">已關閉<br>
+			<br>
+			狀態回覆:<br>
+			<input type="date" name="date"><input type="time" name="time"><br>
+			<select  name="reply" id="add_placeholder">
+				<option value="到訪無人，下次再訪">到訪無人，下次再訪</option>
+				<option value="測試後正常，若有問題請再報修，謝謝">測試後正常，若有問題請再報修，謝謝</option>
+				<option value="已更換設備，若有問題請再報修，謝謝">測試後正常，若有問題請再報修，謝謝</option>
+				<option value="教育部來函鎖定，請自行詢問圖資處網路組">教育部來函鎖定，請自行詢問圖資處網路組</option>				
+				<option value="other" value="other">其他</option>
+			</select>
+			<br>
+			<input name="other" id="reply_section" type="text"><br>
+			<input type="submit" value="Submit">
+			<input type="reset">
+		</form>	
+			
+	</div>
+	
+</body>
+</html>
