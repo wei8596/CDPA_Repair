@@ -86,7 +86,7 @@ function translate(lang) {
 		$("#repairstatus a").text(trans[3][lang]);
 		$("#bannedlist a").attr("href", "?action=BannedList&lang=" + lang);
 		$("#bannedlist a").text(trans[4][lang]);
-		$("#tutorial span").text(trans[5][lang]);
+		$("#tutorial a").text(trans[5][lang]);
 		$("#eazy a").attr("href", "?action=Tutorial&type=Eazy&lang=" + lang);
 		$("#eazy a").text(trans[6][lang]);
 		$("#lookupIP a").text(trans[7][lang]);
@@ -229,5 +229,33 @@ function getQueryParam() {
 	}
 }
 
+function goTop_Check() {
+	/* 按下GoTop按鈕時的事件 */
+	$('#goTop a').click(function() {
+		// 返回到最頂
+		$('html, body').animate({ scrollTop: 0 }, 'slow');
+		return false;
+	});
+	
+	/* 偵測卷軸滑動時，往下滑超過200px就讓GoTop按鈕出現 */
+	$(window).scroll(function() {
+		if($(this).scrollTop() > 200) {
+			$('#goTop a').fadeIn();
+		}
+		else {
+			$('#goTop a').fadeOut();
+		}
+	});
+}
+
 getQueryParam();
 translate(lang);
+// submenu
+$('#nav > ul').dropotron({
+	offsetY: -22,
+	mode: 'fade',
+	noOpenerFade: true,
+	speed: 300,
+	detach: false
+});
+goTop_Check();
