@@ -18,6 +18,10 @@
     	<h3>Sign Up</h3>
         <form id="registerForm" onInput="checkForm('register',this)" onSubmit="return submitForm('register',this)"><!-- 註冊表單 -->
             <table >
+            	<tr>
+                    <td><label>帳號 account</label></td>
+                    <td><input name="account" type="text" required/></td>
+                </tr>
                 <tr>
                     <td><label>信箱 e-mail</label></td>
                     <td><input name="mailbox" type="text" required/></td>
@@ -43,12 +47,8 @@
 <div id="content-2" class="box">
   <div id="registerDescription"><!-- 補充說明區域 -->
     	<h3>Description</h3>
-        <p>
-        	註冊信箱及密碼即為未來報修系統上登入之帳號密碼，請務必熟記。
-        </p>
-        <p>
-        	密碼限4-24字元。
-        </p>
+        <p>帳號推薦使用學號，以減少您忘記帳號風險及協助我們跑單時尋找報修同學</p>
+        <p>註冊信箱為驗證帳號之使用，並可能用於接收我們的維護通知。</p>
   </div>
 </div>
 
@@ -58,6 +58,6 @@ script
 -->
 <script type="text/javascript" src="assets/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript" src="assets/js/md5.js"></script>
-<script type="text/javascript" src="assets/js/login.js"></script>
+<script type="text/javascript" src="assets/js/account.js"></script>
 </body>
 </html>

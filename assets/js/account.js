@@ -3,6 +3,7 @@
     1.0		190121		by imgc	
 	2.0		190127		修改規範 增加規範(學號原則
 			190127		rename file 為 account.js
+	2.1		190128		fix pattern bug
 	require jquery.js & md5.js 請事先引用
 ***/
 
@@ -12,19 +13,19 @@
 const ACCOUNT = {	//帳號限制
 	MIN : 4,	//最小長度(字元
 	MAX : 24,	//最大長度(字元
-	PATTERN : new RegExp("[0-9a-zA-Z]{" + this.MIN + "," + this.MAX + "}"),	//規範
+	PATTERN : /^[0-9a-zA-Z]+$/,	//規範
 };
 
 const MAIL = {	//郵件限制
 	MIN : 0,	//最小長度(字元
 	MAX : 128,	//最大長度(字元
-	PATTERN : new RegExp("[0-9a-zA-Z\.]+@[0-9a-zA-Z\.]+"),	//規範
+	PATTERN : /^[0-9a-zA-Z\.]+@[0-9a-zA-Z\.]+$/,	//規範
 };
 
 const PASSWORD = {	// 密碼限制
 	MIN : 4,	//最小長度(字元
 	MAX : 24,	//最大長度(字元
-	PATTERN :　new RegExp("[0-9a-zA-Z]{" + this.MIN + "," + this.MAX + "}"),	//規範
+	PATTERN :　/^[0-9a-zA-Z]+$/,	//規範
 };
 
 const INFO = {	//訊息文本
@@ -73,7 +74,7 @@ var CHECK = {//字串檢測
 			this.message = INFO.ZH.ERR.accountLength;
 			return false;
 		}
-		if(ACCOUNT.PATTERN.test(string)){
+		if(!ACCOUNT.PATTERN.test(string)){
 			this.message = INFO.ZH.ERR.accountContain;
 			return false;
 		}
@@ -86,7 +87,7 @@ var CHECK = {//字串檢測
 			this.message = INFO.ZH.ERR.mailLength;
 			return false;
 		}
-		if(MAIL.PATTERN.test(string)){
+		if(!MAIL.PATTERN.test(string)){
 			this.message = INFO.ZH.ERR.mailContain;
 			return false;
 		}
@@ -99,7 +100,7 @@ var CHECK = {//字串檢測
 			this.message = INFO.ZH.ERR.passwordLength;
 			return false;
 		}
-		if(PASSWORD.PATTERN.test(string)){
+		if(!PASSWORD.PATTERN.test(string)){
 			this.message = INFO.ZH.ERR.passwordContain;
 			return false;
 		}
@@ -147,6 +148,10 @@ function submitForm(opt, form){
 
 function checkForm_login(form){
 	//check form for login page
+	if(!CHECK.ACCOUNT(form.elements.namedItem('account').value)){
+		document.getElementById('info').innerHTML = CHECK.message;
+		return false;
+	}
 	if(!CHECK.PASSWORD(form.elements.namedItem('password').value)){
 		document.getElementById('info').innerHTML = CHECK.message;
 		return false;
@@ -157,12 +162,20 @@ function checkForm_login(form){
 
 function checkForm_reg(form){
 	//check form for register page
+	if(!CHECK.ACCOUNT(form.elements.namedItem('account').value)){
+		document.getElementById('info').innerHTML = CHECK.message;
+		return false;
+	}
+	if(!CHECK.MAIL(form.elements.namedItem('mailbox').value)){
+		document.getElementById('info').innerHTML = CHECK.message;
+		return false;
+	}
 	if(!CHECK.PASSWORD(form.elements.namedItem('password').value)){
 		document.getElementById('info').innerHTML = CHECK.message;
 		return false;
 	}
 	if(form.elements.namedItem('password').value != form.elements.namedItem('verify').value){// double check
-		document.getElementById('info').innerHTML = info.err.passwordDoubleCheck;
+		document.getElementById('info').innerHTML = info.ERR.passwordDoubleCheck;
 		return false;
 	}
 	document.getElementById('info').innerHTML = "&nbsp;";
