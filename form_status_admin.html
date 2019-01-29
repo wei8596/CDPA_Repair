@@ -1,12 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-	<meta content="no-cache" http-equiv="Cache-Control"/>
-
-	<!--Scripts-->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<script src="asset/js/form_status.js"></script>
+	<meta charset="UTF-8"/>
+	<meta http-equiv="Cache-Control" content="no-cache"/>
 	<!--Title-->
 	<title>報修單狀態</title>
 </head>
@@ -68,7 +64,7 @@
 			<input type="radio" name="status" id="closed" value="closed" />已關閉<br />
 			<br />
 			狀態回覆:<br />
-			<input type="date" name="date"><input type="time" name="time" /><br />
+			<input type="date" name="date" /><input type="time" name="time" /><br />
 			<select  name="reply" id="add_placeholder">
 				<option value="到訪無人，下次再訪">到訪無人，下次再訪</option>
 				<option value="測試後正常，若有問題請再報修，謝謝">測試後正常，若有問題請再報修，謝謝</option>
@@ -78,11 +74,13 @@
 			</select>
 			<br />
 			<textarea rows="4" cols="50" name="other" id="reply_section" ></textarea><br />
-			<input type="submit" value="Submit">
-			<input type="reset">
+			<input type="submit" value="Submit" />
+			<input type="reset" />
 		</form>	
 			
 	</div>
-	
+	<!--Scripts-->
+	<script src="assets/js/jquery-3.3.1.min.js"></script>
+	<script src="asset/js/form_status.js"></script>
 </body>
 </html>
