@@ -90,6 +90,7 @@ function translate(lang) {
 		$("#tutorial a").text(trans[5][lang]);
 		$("#eazy a").attr("href", "?action=Tutorial&type=Eazy&lang=" + lang);
 		$("#eazy a").text(trans[6][lang]);
+		$("#lookupIP a").attr({href:"http://www.cdpa.nsysu.edu.tw/lookUpIP.php", target:"_blank"});
 		$("#lookupIP a").text(trans[7][lang]);
 		$("#queryMAC a").attr("href", "?action=Tutorial&type=QueryMACAddress&lang=" + lang);
 		$("#queryMAC a").text(trans[8][lang]);
