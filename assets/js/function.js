@@ -61,6 +61,9 @@ var trans = [
 	},{
 		zh:"若您無法正確瀏覽本系統，請嘗試使用其他瀏覽器，謝謝。",
 		en:"If you are not able to correctly viewing the web page, please change your Browser, thank you."
+	},{
+		zh:"若報修後超過兩週以上無人處理，請優先私訊CDPA的Facebook粉絲專頁！",
+		en:""
 	}
 ];
 
@@ -100,6 +103,7 @@ function translate(lang) {
 		$("#home a").text(trans[10][lang]);
 		$("#content1 p").text(trans[11][lang]);
 		$("#content2 p").text(trans[12][lang]);
+		$("#content3 p").text(trans[13][lang]);
 	});
 }
 
