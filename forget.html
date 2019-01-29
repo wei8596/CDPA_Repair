@@ -1,22 +1,15 @@
-<!--
-	register page
-    1.0		190121		by imgc
-    1.1		190121		重新調整表
-    未來考慮用ajax處理傳值
--->
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8"/>
-<title>Register</title>
-<link rel="stylesheet" type="text/css" href="assets/css/imgc.css"></link>
+<meta charset="utf-8">
+<title>forget password</title>
 </head>
 
-<body style="background-color:#f5f5f5">
+<body>
 <div id="content-1" class="box">
-    <div id="registerController"><!-- 填表區域 -->
+    <div id="forgetController"><!-- 填表區域 -->
     	<h3>Sign Up</h3>
-        <form id="registerForm" onInput="checkForm('register',this)" onSubmit="return submitForm('register',this)"><!-- 註冊表單 -->
+        <form id="forgetForm" onInput="checkForm('forget',this)" onSubmit="return submitForm('forget',this)"><!-- 註冊表單 -->
             <table >
             	<tr>
                     <td><label>帳號 account</label></td>
@@ -27,7 +20,7 @@
                     <td><input name="mailbox" type="text" required="required"/></td>
                 </tr>
                 <tr>
-                    <td><label>密碼 password</label></td>
+                    <td><label>新密碼 new password</label></td>
                     <td><input name="password" type="password" pattern="[0-9,a-z]{4,32}" placeholder="only contain 0-9,a-z" required="required"/></td>
                 </tr>
                 <tr>
@@ -37,7 +30,7 @@
                 
                 <tr>
                     <td></td>
-                    <td><input name="submit" type="submit" value="登入/sign in"/></td>
+                    <td><input name="submit" type="submit" value="送/send"/></td>
                 </tr>
             </table>
         </form>
@@ -45,10 +38,9 @@
     </div>
 </div>
 <div id="content-2" class="box">
-  <div id="registerDescription"><!-- 補充說明區域 -->
+  <div id="description"><!-- 補充說明區域 -->
     	<h3>Description</h3>
-        <p>帳號推薦使用學號，以減少您忘記帳號風險及協助我們跑單時尋找報修同學</p>
-        <p>註冊信箱為驗證帳號之使用，並可能用於接收我們的維護通知。</p>
+        <p>此處將協助您重新註冊新密碼，您所使用的帳號與信箱應與原始帳號相同</p>
   </div>
 </div>
 
