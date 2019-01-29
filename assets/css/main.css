@@ -5,7 +5,7 @@ h1, h2, h3, h4, h5, h6, p,
 pre, a, code, img, small, strong, sub, sup,
 nav ol, nav ul, nav li, footer ol, footer ul, footer li,
 form, label, table, tr, th, td,
-canvas, footer, header, nav, section {
+canvas, footer, header, menu, nav, section {
 	margin: 0;
 	padding: 0;
 	border: 0;
@@ -14,7 +14,7 @@ canvas, footer, header, nav, section {
 	vertical-align: baseline;
 }
 
-footer, header, nav, section {
+footer, header, menu, nav, section {
 	display: block;
 }
 
@@ -25,6 +25,11 @@ nav ol, nav ul, footer ol, footer ul {
 /* Basic */
 html {
 	box-sizing: border-box;
+}
+
+body {
+	/* Adding !important forces the browser to overwrite the default style applied by Bootstrap */
+	background-color: #F5F5F5 !important;
 }
 
 @-ms-viewport {
@@ -44,6 +49,61 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
 	text-decoration: none;
 	outline: 0;
 }
+
+/* List */
+ul.default {
+	list-style: disc;
+	padding-left: 1em;
+}
+
+	ul.default li {
+		padding-left: 0.5em;
+	}
+
+ul.actions li {
+	display: inline-block;
+	padding: 0 0 0 0.25em;
+	margin: 0 0 0 0.25em;
+}
+
+	ul.actions li:first-child {
+		margin-left: 0;
+		padding-left: 0;
+	}
+
+ul.menu li {
+	border-left: solid 1px #eee;
+	display: inline-block;
+	padding: 0 0 0 0;
+	margin: 0 0 0 0;
+}
+
+	ul.menu li:first-child {
+		border-left: 0;
+		margin-left: 0;
+		padding-left: 0;
+	}
+
+ul.divided li {
+	border-top: solid 1px #eee;
+	padding: 0.5em 0 0 0;
+	margin: 0.5em 0 0 0;
+}
+
+	ul.divided li:first-child {
+		border-top: 0 !important;
+		padding-top: 0 !important;
+		margin-top: 0 !important;
+	}
+
+ol.default {
+	list-style: decimal;
+	padding-left: 1.25em;
+}
+
+	ol.default li {
+		padding-left: 0.25em;
+	}
 
 /* Nav */
 #nav {
@@ -191,6 +251,11 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
 		color: inherit;
 	}
 
+
+#content {
+	padding: 1em 0 0 1em;
+}
+
 /* Go Top */
 #goTop a {
 	position:fixed;
@@ -212,42 +277,4 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
 #goTop a:hover {
 	background:#0099CC;
 }
-
-
-/* Large */
-@media screen and (max-width: 1280px) {
-	/* Basic */
-	body {
-		line-height: 1.75em;
-		font-size: 10.75pt;
-	}
-	
-	/* Wrappers */
-	#header-wrapper {
-		padding: 2em 0;
-		height: auto;
-	}
-}
-
-/* Medium */
-@media screen and (max-width: 980px) {
-	/* Basic */
-	html, body {
-		overflow-x: hidden;
-	}
-	
-	/* Nav */
-	#page-wrapper {
-		-moz-backface-visibility: hidden;
-		-webkit-backface-visibility: hidden;
-		-ms-backface-visibility: hidden;
-		backface-visibility: hidden;
-		-moz-transition: -moz-transform 0.5s ease;
-		-webkit-transition: -webkit-transform 0.5s ease;
-		-ms-transition: -ms-transform 0.5s ease;
-		transition: transform 0.5s ease;
-		padding-bottom: 1px;
-	}
-}
-
 
