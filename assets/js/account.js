@@ -115,10 +115,11 @@ function checkForm(opt, form){
 			return checkForm_login(form);
 		break;
 		case "register":
-		return checkForm_reg(form);
+		case "forget":
+			return checkForm_reg(form);
 		default:
-		alert("checkForm(): unexpect opt");
-		return false;
+			alert("checkForm(): unexpect opt");
+			return false;
 	}
 	
 }
@@ -133,6 +134,7 @@ function submitForm(opt, form){
 			return false;
 		break;
 		case "register":
+		case "forget":
 			if (checkForm_reg(form)){// hash password & clear verify value
 				form.elements.namedItem('password').value = hash(form.elements.namedItem('password').value);
 				form.elements.namedItem('verify').value = "";

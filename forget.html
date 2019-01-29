@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>forget password</title>
+</head>
+
+<body>
+<div id="content-1" class="box">
+    <div id="forgetController"><!-- 填表區域 -->
+    	<h3>Sign Up</h3>
+        <form id="forgetForm" onInput="checkForm('forget',this)" onSubmit="return submitForm('forget',this)"><!-- 註冊表單 -->
+            <table >
+            	<tr>
+                    <td><label>帳號 account</label></td>
+                    <td><input name="account" type="text" required/></td>
+                </tr>
+                <tr>
+                    <td><label>信箱 e-mail</label></td>
+                    <td><input name="mailbox" type="text" required/></td>
+                </tr>
+                <tr>
+                    <td><label>新密碼 new password</label></td>
+                    <td><input name="password" type="password" pattern="[0-9,a-z]{4,32}" placeholder="only contain 0-9,a-z" required/></td>
+                </tr>
+                <tr>
+                    <td><label>密碼確認 verify </label></td><!-- password double check -->
+                    <td><input name="verify" type="password" pattern="[0-9,a-z]{0,32}" placeholder="retype your password"/></td>
+                </tr>
+                
+                <tr>
+                    <td></td>
+                    <td><input name="submit" type="submit" value="送/send"/></td>
+                </tr>
+            </table>
+        </form>
+        <span id="info" style="color:red">&nbsp;</span>
+    </div>
+</div>
+<div id="content-2" class="box">
+  <div id="description"><!-- 補充說明區域 -->
+    	<h3>Description</h3>
+        <p>此處將協助您重新註冊新密碼，您所使用的帳號與信箱應與原始帳號相同</p>
+  </div>
+</div>
+
+
+<!--
+script
+-->
+<script type="text/javascript" src="assets/js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="assets/js/md5.js"></script>
+<script type="text/javascript" src="assets/js/account.js"></script>
+</body>
+</html>
