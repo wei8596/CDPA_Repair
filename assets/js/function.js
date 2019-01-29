@@ -86,6 +86,7 @@ function translate(lang) {
 		$("#repairstatus a").text(trans[3][lang]);
 		$("#bannedlist a").attr("href", "?action=BannedList&lang=" + lang);
 		$("#bannedlist a").text(trans[4][lang]);
+		$("#tutorial a").attr("href", "#");
 		$("#tutorial a").text(trans[5][lang]);
 		$("#eazy a").attr("href", "?action=Tutorial&type=Eazy&lang=" + lang);
 		$("#eazy a").text(trans[6][lang]);
