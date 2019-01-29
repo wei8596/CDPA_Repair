@@ -7,56 +7,82 @@
 -->
 <html>
 	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<meta content="no-cache" http-equiv="Cache-Control"/>
 		<title>中山大學宿網報修系統</title>
-		<meta content="NSYSU-CDPA" name="author"/>
-		<!-- Font Awesome CSS -->
+		<!-- Metadata -->
+		<meta charset="UTF-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="Cache-Control" content="no-cache"/>
+		<meta name="description" content="中山大學CDPA宿舍網路報修系統"/>
+		<meta name="author" content="NSYSU-CDPA"/>
+		<!-- CSS -->
+		<link rel="stylesheet" href="assets/css/main.css">
+		<link rel="stylesheet" href="assets/css/bootstrap.min.css">
 		<link rel="stylesheet" href="assets/css/fontawesome.min.css">
 	</head>
 	<body>
-		<!-- Title -->
-		<div class="title">
-		<h1>CDPA Repair</h1>
-		</div>
-		
-		<!-- Navigation Bar -->
-		<div id="navbar">
-		<ul class="level1">
-		<li id="lang"><a></a></li>
-		<li id="login"><a></a></li>
-		<li id="repair"><a></a></li>
-		<li id="repairstatus"><a></a></li>
-		<li id="bannedlist"><a></a></li>
-		<li id="tutorial" class="submenu"><span>各式教學</span>
-			<ul class="level2">
-				<li id="eazy"><a></a></li>
-				<li id="lookupIP"><a href="http://www.cdpa.nsysu.edu.tw/lookUpIP.php" target="_blank"></a></li>
-				<li id="queryMAC"><a></a></li>
-				<li id="queryIPConflict"><a></a></li>
-			</ul>
-		</li>
-		<li id="home"><a></a></li>
-		</ul>
+	<div id="page-wrapper">
+		<!-- Header -->
+		<div id="header-wrapper">
+			<header id="header">
+				<div class="inner">
+					<!-- Logo -->
+					<h1><a href="http://www.cdpa.nsysu.edu.tw" id="logo" target="_blank">CDPA</a></h1>
+					
+					<!-- Navigation Bar -->
+					<nav id="nav">
+						<ul class="level1">
+							<li id="lang"><a></a></li>
+							<li id="login"><a></a></li>
+							<li id="repair"><a></a></li>
+							<li id="repairstatus"><a></a></li>
+							<li id="bannedlist"><a></a></li>
+							<li id="tutorial" class="submenu"><a></a>
+								<ul class="level2">
+									<li id="eazy"><a></a></li>
+									<li id="lookupIP"><a href="http://www.cdpa.nsysu.edu.tw/lookUpIP.php" target="_blank"></a></li>
+									<li id="queryMAC"><a></a></li>
+									<li id="queryIPConflict"><a></a></li>
+								</ul>
+							</li>
+							<li id="home"><a></a></li>
+						</ul>
+					</nav>
+				</div>
+			</header>
 		</div>
 		
 		<!-- Content -->
 		<div id="content">
-		<ul>
-			<li id="content1"><p></p></li>
-			<li id="content2"><p></p></li>
-		</ul>
+			<ul>
+				<li id="content1"><p></p></li>
+				<li id="content2"><p></p></li>
+			</ul>
 		</div>
 		
-		<a href="#content"><i class="fa fa-angle-up fa-2x"></i></a>
+		<!-- Go Top -->
+		<div id="goTop">
+			<a href="#"><i class="fa fa-angle-up fa-2x"></i></a>
+		</div>
 		
 		<!-- Footer -->
-		<div class="footer"><a href="http://www.cdpa.nsysu.edu.tw" title="CDPA Website" target="_blank">NSYSU-CDPA</a> &copy; 2019</div>
+		<footer id="footer" class="container">
+			<div class="row">
+				<div class="col">
+					<div id="copyright">
+						<ul class="menu">
+							<li><a href="http://www.cdpa.nsysu.edu.tw" title="CDPA Website" target="_blank">NSYSU-CDPA</a> &copy; 2019</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</footer>
 		
 		<!-- Scripts -->
 		<script type="text/javascript" src="assets/js/jquery-3.3.1.min.js"></script>
+		<script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="assets/js/jquery.dropotron.min.js"></script>
 		<script type="text/javascript" src="assets/js/function.js"></script>
-		
+	</div>
 	</body>
 </html>
