@@ -91,14 +91,14 @@ function translate(lang) {
 		$("#bannedlist a").text(trans[4][lang]);
 		$("#tutorial a").attr("href", "#");
 		$("#tutorial a").text(trans[5][lang]);
-		$("#eazy a").attr("href", "?action=Tutorial&type=Eazy&lang=" + lang);
-		$("#eazy a").text(trans[6][lang]);
-		$("#lookupIP a").attr({href:"http://www.cdpa.nsysu.edu.tw/lookUpIP.php", target:"_blank"});
-		$("#lookupIP a").text(trans[7][lang]);
-		$("#queryMAC a").attr("href", "?action=Tutorial&type=QueryMACAddress&lang=" + lang);
-		$("#queryMAC a").text(trans[8][lang]);
-		$("#queryIPConflict a").attr("href", "?action=Tutorial&type=QueryIPConflict&lang=" + lang);
-		$("#queryIPConflict a").text(trans[9][lang]);
+		$("#eazy").attr("href", "?action=Tutorial&type=Eazy&lang=" + lang);
+		$("#eazy").text(trans[6][lang]);
+		$("#lookupIP").attr({href:"http://www.cdpa.nsysu.edu.tw/lookUpIP.php", target:"_blank"});
+		$("#lookupIP").text(trans[7][lang]);
+		$("#queryMAC").attr("href", "?action=Tutorial&type=QueryMACAddress&lang=" + lang);
+		$("#queryMAC").text(trans[8][lang]);
+		$("#queryIPConflict").attr("href", "?action=Tutorial&type=QueryIPConflict&lang=" + lang);
+		$("#queryIPConflict").text(trans[9][lang]);
 		$("#home a").attr("href", "?lang=" + lang);
 		$("#home a").text(trans[10][lang]);
 		$("#content1 p").text(trans[11][lang]);
@@ -256,12 +256,4 @@ function goTop_Check() {
 
 getQueryParam();
 translate(lang);
-// submenu
-$('#nav > ul').dropotron({
-	offsetY: -22,
-	mode: 'fade',
-	noOpenerFade: true,
-	speed: 300,
-	detach: false
-});
 goTop_Check();

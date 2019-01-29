@@ -16,44 +16,65 @@
 		<meta name="description" content="中山大學CDPA宿舍網路報修系統"/>
 		<meta name="author" content="NSYSU-CDPA"/>
 		<!-- CSS -->
-		<link rel="stylesheet" href="assets/css/main.css">
 		<link rel="stylesheet" href="assets/css/bootstrap.min.css">
+		<link rel="stylesheet" href="assets/css/main.css">
 		<link rel="stylesheet" href="assets/css/fontawesome.min.css">
 	</head>
 	<body>
-	<div id="page-wrapper">
-		<!-- Header -->
-		<div id="header-wrapper">
-			<header id="header">
-				<div class="inner">
-					<!-- Logo -->
-					<h1><a href="http://www.cdpa.nsysu.edu.tw" id="logo" target="_blank">CDPA</a></h1>
-					
-					<!-- Navigation Bar -->
-					<nav id="nav">
-						<ul class="level1">
-							<li id="lang"><a></a></li>
-							<li id="login"><a></a></li>
-							<li id="repair"><a></a></li>
-							<li id="repairstatus"><a></a></li>
-							<li id="bannedlist"><a></a></li>
-							<li id="tutorial" class="submenu"><a></a>
-								<ul class="level2">
-									<li id="eazy"><a></a></li>
-									<li id="lookupIP"><a></a></li>
-									<li id="queryMAC"><a></a></li>
-									<li id="queryIPConflict"><a></a></li>
-								</ul>
-							</li>
-							<li id="home"><a></a></li>
-						</ul>
-					</nav>
-				</div>
-			</header>
-		</div>
+		<!-- Navigation Bar -->
+		<!-- .navbar-expand-{sm|md|lg|xl}決定在哪個斷點以上就出現漢堡式選單 -->
+		<!-- .bg-dark 背景顏色 .navbar-dark 文字顏色 -->
+		<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+			<!-- Logo -->
+			<h1><a class="navbar-brand" href="http://www.cdpa.nsysu.edu.tw" id="logo" target="_blank">CDPA</a></h1>
+			
+			<!-- Toggler/collapsibe Button 漢堡式選單按鈕 -->
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+				<!-- 漢堡式選單Icon -->
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			
+			<!-- Navbar links -->
+			<!-- .collapse.navbar-collapse 用於外層中斷點群組和隱藏導覽列內容 -->
+			<div class="collapse navbar-collapse" id="collapsibleNavbar">
+				<!-- .ml-auto 靠右對齊 -->
+				<ul class="navbar-nav ml-auto">
+					<li id="lang" class="nav-item">
+						<a class="nav-link"></a>
+					</li>
+					<li id="login" class="nav-item">
+						<a class="nav-link"></a>
+					</li>
+					<li id="repair" class="nav-item">
+						<a class="nav-link"></a>
+					</li>
+					<li id="repairstatus" class="nav-item">
+						<a class="nav-link"></a>
+					</li>
+					<li id="bannedlist" class="nav-item">
+						<a class="nav-link"></a>
+					</li>
+					<!-- Dropdown 下拉式選單 -->
+					<li id="tutorial" class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+						</a>
+						<!-- 下拉式選單內容 -->
+						<div class="dropdown-menu">
+							<a class="dropdown-item" id="eazy"></a>
+							<a class="dropdown-item" id="lookupIP"></a>
+							<a class="dropdown-item" id="queryMAC"></a>
+							<a class="dropdown-item" id="queryIPConflict"></a>
+						</div>
+					</li>
+					<li id="home" class="nav-item">
+						<a class="nav-link"></a>
+					</li>
+				</ul>
+			</div>
+		</nav>
 		
 		<!-- Content -->
-		<div id="content">
+		<div id="content" class="container">
 			<ul>
 				<li id="content1"><p></p></li>
 				<li id="content2"><p></p></li>
@@ -85,6 +106,5 @@
 		<script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="assets/js/jquery.dropotron.min.js"></script>
 		<script type="text/javascript" src="assets/js/function.js"></script>
-	</div>
 	</body>
 </html>

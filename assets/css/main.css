@@ -1,43 +1,12 @@
 @charset "utf-8";
 /* CSS Document */
-html, body, div, span, object, iframe,
-h1, h2, h3, h4, h5, h6, p,
-pre, a, code, img, small, strong, sub, sup,
-nav ol, nav ul, nav li, footer ol, footer ul, footer li,
-form, label, table, tr, th, td,
-canvas, footer, header, menu, nav, section {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
-}
-
-footer, header, menu, nav, section {
-	display: block;
-}
-
-nav ol, nav ul, footer ol, footer ul {
-	list-style: none;
-}
-
 /* Basic */
-html {
-	box-sizing: border-box;
-}
-
 body {
 	/* Adding !important forces the browser to overwrite the default style applied by Bootstrap */
 	background-color: #F5F5F5 !important;
 }
 
-@-ms-viewport {
-	width: device-width;
-}
-
 h1, h2, h3, h4, h5, h6 {
-	text-transform: uppercase;
 	font-weight: 800;
 	letter-spacing: 0.04em;
 	color: #404248;
@@ -51,26 +20,6 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
 }
 
 /* List */
-ul.default {
-	list-style: disc;
-	padding-left: 1em;
-}
-
-	ul.default li {
-		padding-left: 0.5em;
-	}
-
-ul.actions li {
-	display: inline-block;
-	padding: 0 0 0 0.25em;
-	margin: 0 0 0 0.25em;
-}
-
-	ul.actions li:first-child {
-		margin-left: 0;
-		padding-left: 0;
-	}
-
 ul.menu li {
 	border-left: solid 1px #eee;
 	display: inline-block;
@@ -78,119 +27,8 @@ ul.menu li {
 	margin: 0 0 0 0;
 }
 
-	ul.menu li:first-child {
-		border-left: 0;
-		margin-left: 0;
-		padding-left: 0;
-	}
-
-ul.divided li {
-	border-top: solid 1px #eee;
-	padding: 0.5em 0 0 0;
-	margin: 0.5em 0 0 0;
-}
-
-	ul.divided li:first-child {
-		border-top: 0 !important;
-		padding-top: 0 !important;
-		margin-top: 0 !important;
-	}
-
-ol.default {
-	list-style: decimal;
-	padding-left: 1.25em;
-}
-
-	ol.default li {
-		padding-left: 0.25em;
-	}
-
-/* Nav */
-#nav {
-	position: absolute;
-	right: 2em;
-	top: 0;
-	line-height: 5.5em;
-}
-	#nav > ul > li {
-		float: left;
-		padding: 0 0.8em 0 0.8em;
-	}
-	
-		#nav > ul > li > a {
-			color: #fff;
-			text-decoration: none;
-			text-transform: uppercase;
-			font-weight: 800;
-			font-size: 0.95em;
-			letter-spacing: 0.075em;
-			padding: 0.5em 0.8em 0.5em 0.8em;
-			border-radius: 6px;
-			outline: 0;
-		}
-		
-		#nav > ul > li.active > a {
-			background: rgba(0, 0, 0, 0.15);
-			box-shadow: inset 1px 1px 0px 0px rgba(0, 0, 0, 0.025), 1px 1px 0px 0px rgba(255, 255, 255, 0.025);
-		}
-		
-		#nav > ul > li:last-child {
-			padding-right: 0;
-		}
-		
-		#nav > ul > li > ul {
-			display: none;
-		}
-
-.dropotron {
-	background-image: -moz-linear-gradient(top, rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0)), url("img/bg02.png");
-	background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0)), url("img/bg02.png");
-	background-image: -ms-linear-gradient(top, rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0)), url("img/bg02.png");
-	background-image: linear-gradient(top, rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0)), url("img/bg02.png");
-	position: relative;
-	background-color: #3B3E45;
-	background-color: rgba(59, 62, 69, 0.9);
-	border-radius: 8px;
-	box-shadow: inset 0px 0px 0px 1px rgba(0, 0, 0, 0.5), inset 0px 0px 0px 2px rgba(255, 255, 255, 0.075), inset 0px 2px 1px 0px rgba(255, 255, 255, 0.2), 0px 2px 14px 0px rgba(0, 0, 0, 0.4);
-	text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.5);
-	padding: 1.5em;
-	line-height: 2.5em;
-	min-width: 15em;
-}
-
-	.dropotron.level-0 {
-		border-top-left-radius: 0;
-		border-top-right-radius: 0;
-		margin-top: -2px;
-		box-shadow: inset 0px 0px 0px 1px rgba(0, 0, 0, 0.5), inset 0px 0px 0px 2px rgba(255, 255, 255, 0.075), 0px 2px 14px 0px rgba(0, 0, 0, 0.4);
-	}
-	
-	.dropotron a, .dropotron span {
-		color: #aaa;
-		text-decoration: none;
-		text-transform: uppercase;
-		font-weight: 800;
-		font-size: 0.8em;
-		letter-spacing: 0.075em;
-		outline: 0;
-	}
-	
-	.dropotron li:hover > a, .dropotron li:hover > span {
-		color: #fff;
-	}
-
-/* Wrappers */
-#header-wrapper {
-	background: url("img/bg01.png"), url("../img/header.jpg");
-	background-position: top left, center center;
-	background-size: auto, cover;
-	padding: 3em 0;
-}
-
-
-
 /* Header */
-#header {
+/*#header {
 	position: relative;
 	border-radius: 10px;
 	background: rgba(255, 255, 255, 0.1);
@@ -220,7 +58,7 @@ ol.default {
 		font-size: 1.5em;
 		color: #fff;
 	}
-
+*/
 /* Footer */
 #footer {
 	margin-bottom: 0;
@@ -253,7 +91,7 @@ ol.default {
 
 
 #content {
-	padding: 1em 0 0 1em;
+	padding: 1em 0 0 0;
 }
 
 /* Go Top */
