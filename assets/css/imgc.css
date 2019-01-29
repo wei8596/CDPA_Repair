@@ -11,4 +11,15 @@
 	padding:10px;
 	margin:3px;
 }
-
+table{
+	width:90%;
+	border-spacing:0px 10px;border-collapse:separate;
+}
+td{
+	padding-left:10px;
+	text-align:start;
+	min-width:150px;
+}
+input{
+	width:95%;
+}

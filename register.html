@@ -16,28 +16,28 @@
 <div id="content-1" class="box">
     <div id="registerController"><!-- 填表區域 -->
     	<h3>Sign Up</h3>
-        <form id="registerForm" onInput="checkForm('register',this)" onSubmit="return submitForm('register',this)"><!-- 註冊表單 -->
+        <form id="registerForm" action="" method="post" onInput="checkForm('register',this)" onSubmit="return submitForm('register',this)"><!-- 註冊表單 -->
             <table >
             	<tr>
                     <td><label>帳號 account</label></td>
-                    <td><input name="account" type="text" required/></td>
+                    <td><input name="account" type="text" placeholder="your student id" required="required"/></td>
                 </tr>
                 <tr>
                     <td><label>信箱 e-mail</label></td>
-                    <td><input name="mailbox" type="text" required/></td>
+                    <td><input name="mailbox" type="text" required="required"/></td>
                 </tr>
                 <tr>
                     <td><label>密碼 password</label></td>
-                    <td><input name="password" type="password" pattern="[0-9,a-z]{4,32}" placeholder="only contain 0-9,a-z" required/></td>
+                    <td><input name="password" type="password" pattern="[0-9a-zA-Z]{4,32}" placeholder="only contain 0-9,a-z" required="required"/></td>
                 </tr>
                 <tr>
                     <td><label>密碼確認 verify </label></td><!-- password double check -->
-                    <td><input name="verify" type="password" pattern="[0-9,a-z]{0,32}" placeholder="retype your password"/></td>
+                    <td><input name="verify" type="password" pattern="[0-9a-zA-Z]{0,32}" placeholder="retype your password"/></td>
                 </tr>
                 
                 <tr>
                     <td></td>
-                    <td><input name="submit" type="submit" value="登入/sign in"/></td>
+                    <td><input name="submit" type="submit" value="送出/send"/></td>
                 </tr>
             </table>
         </form>
@@ -45,10 +45,11 @@
     </div>
 </div>
 <div id="content-2" class="box">
-  <div id="registerDescription"><!-- 補充說明區域 -->
+  <div id="contentDescription"><!-- 補充說明區域 -->
     	<h3>Description</h3>
-        <p>帳號推薦使用學號，以減少您忘記帳號風險及協助我們跑單時尋找報修同學</p>
-        <p>註冊信箱為驗證帳號之使用，並可能用於接收我們的維護通知。</p>
+        <div id="description">
+        	wait for loading js...
+        </div>
   </div>
 </div>
 
@@ -59,5 +60,6 @@ script
 <script type="text/javascript" src="assets/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript" src="assets/js/md5.js"></script>
 <script type="text/javascript" src="assets/js/account.js"></script>
+<script type="text/javascript" src="assets/js/register.js"></script>
 </body>
 </html>

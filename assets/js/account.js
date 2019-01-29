@@ -4,6 +4,7 @@
 	2.0		190127		修改規範 增加規範(學號原則
 			190127		rename file 為 account.js
 	2.1		190128		fix pattern bug
+	2.2		190130		追加英文訊息
 	require jquery.js & md5.js 請事先引用
 ***/
 
@@ -13,7 +14,7 @@
 const ACCOUNT = {	//帳號限制
 	MIN : 4,	//最小長度(字元
 	MAX : 24,	//最大長度(字元
-	PATTERN : /^[0-9a-zA-Z]+$/,	//規範
+	PATTERN : /^[A-Z][0-9]+$/,	//規範
 };
 
 const MAIL = {	//郵件限制
@@ -30,15 +31,30 @@ const PASSWORD = {	// 密碼限制
 
 const INFO = {	//訊息文本
 	EN : {	//英
+		HINT : {//提示訊息
+			waitForMail : "You may receive our verification letter in a few minutes."
+		},
+		ERR : {//錯誤訊息
+			//不合法輸入
+			accountLength : "the length of account should be " + ACCOUNT.MIN + "~" + ACCOUNT.MAX ,
+			accountContain : "account should be a student ID ( first letter capitalized ). Example: B012345678",
+			
+			mailLength : "the length of mailbox address should be " + MAIL.MIN + "~" + MAIL.MAX ,
+			mailContain : "mail address is incorrect. example: user@mail.com",
+						
+			passwordLength : "the length of password should be " + PASSWORD.MIN + "~" + PASSWORD.MAX ,
+			passwordContain : "password only contain 0-9,a-z or A-Z ",
+			passwordDoubleCheck : "password and verify must be same"
+		}
 	},
 	ZH : {	//中
 		HINT : {//提示訊息
-			waitForMail : "已提交!! 將於數分鐘內寄送驗證信件"
+			waitForMail : "已提交!! 您可能於數分鐘後收到我們的驗證信件"
 		},
 		ERR : {//錯誤訊息
 			//不合法輸入
 			accountLength : "帳號長度錯誤 " + ACCOUNT.MIN + "~" + ACCOUNT.MAX + "字",
-			accountContain : "account only contain 0-9,a-z or A-Z. example: B012345678",
+			accountContain : "account should be a student ID ( first letter capitalized ). Example: B012345678",
 			
 			mailLength : "郵件長度錯誤 " + MAIL.MIN + "~" + MAIL.MAX + "字",
 			mailContain : "mail address is incorrect. example: user@mail.com",
@@ -56,6 +72,15 @@ const INFO = {	//訊息文本
 
 var info = INFO.ZH;	//輸出提示之來源
 
+var pattern = /lang=[^&#]*/i;
+var lang = pattern.exec(location.search);
+if (lang == "lang=en"){//判斷語言
+	info = INFO.EN;
+}
+else{
+	info = INFO.ZH;
+}
+
 //----
 //func
 //----
@@ -71,11 +96,11 @@ var CHECK = {//字串檢測
 		//帳號檢測
 		this.message = "";
 		if(string.length < ACCOUNT.MIN || string.length > ACCOUNT.MAX){
-			this.message = INFO.ZH.ERR.accountLength;
+			this.message = info.ERR.accountLength;
 			return false;
 		}
 		if(!ACCOUNT.PATTERN.test(string)){
-			this.message = INFO.ZH.ERR.accountContain;
+			this.message = info.ERR.accountContain;
 			return false;
 		}
 		return true;
@@ -84,11 +109,11 @@ var CHECK = {//字串檢測
 		//郵件檢測
 		this.message = "";
 		if(string.length < MAIL.MIN || string.length > MAIL.MAX){
-			this.message = INFO.ZH.ERR.mailLength;
+			this.message = info.ERR.mailLength;
 			return false;
 		}
 		if(!MAIL.PATTERN.test(string)){
-			this.message = INFO.ZH.ERR.mailContain;
+			this.message = info.ERR.mailContain;
 			return false;
 		}
 		return true;
@@ -97,11 +122,11 @@ var CHECK = {//字串檢測
 		//密碼檢測
 		this.message = "";
 		if(string.length < PASSWORD.MIN || string.length > PASSWORD.MAX){
-			this.message = INFO.ZH.ERR.passwordLength;
+			this.message = info.ERR.passwordLength;
 			return false;
 		}
 		if(!PASSWORD.PATTERN.test(string)){
-			this.message = INFO.ZH.ERR.passwordContain;
+			this.message = info.ERR.passwordContain;
 			return false;
 		}
 		return true;
@@ -138,7 +163,7 @@ function submitForm(opt, form){
 			if (checkForm_reg(form)){// hash password & clear verify value
 				form.elements.namedItem('password').value = hash(form.elements.namedItem('password').value);
 				form.elements.namedItem('verify').value = "";
-				alert(info.hint.waitForMail);
+				//alert(info.hint.waitForMail);
 				return true;
 			}
 			return false;
