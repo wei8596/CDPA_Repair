@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8"/>
-	<meta http-equiv="Cache-Control" content="no-cache"/>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta content="no-cache" http-equiv="Cache-Control"/>
 
 	<!--Scripts-->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -59,16 +59,16 @@
 			</tr>
 		</table>
 	</div>
-	<br/>
+	<br />
 	<div class="update_form">
 		<form  accept-charset="UTF-8">
-			狀態更新:<br/>
-			<input type="radio" name="status" id="open" value="open"/>開啟中<br/>
-			<input type="radio" name="status" id="processing" value="processing"/>處理中<br/>
-			<input type="radio" name="status" id="closed" value="closed"/>已關閉<br/>
-			<br/>
-			狀態回覆:<br/>
-			<input type="date" name="date"/><input type="time" name="time"/><br/>
+			狀態更新:<br />
+			<input type="radio" name="status" id="open" value="open" />開啟中<br />
+			<input type="radio" name="status" id="processing" value="processing" />處理中<br />
+			<input type="radio" name="status" id="closed" value="closed" />已關閉<br />
+			<br />
+			狀態回覆:<br />
+			<input type="date" name="date"><input type="time" name="time" /><br />
 			<select  name="reply" id="add_placeholder">
 				<option value="到訪無人，下次再訪">到訪無人，下次再訪</option>
 				<option value="測試後正常，若有問題請再報修，謝謝">測試後正常，若有問題請再報修，謝謝</option>
@@ -76,10 +76,10 @@
 				<option value="教育部來函鎖定，請自行詢問圖資處網路組">教育部來函鎖定，請自行詢問圖資處網路組</option>				
 				<option value="other" value="other">其他</option>
 			</select>
-			<br/>
-			<input name="other" id="reply_section" type="text"/><br/>
-			<input type="submit" value="Submit"/>
-			<input type="reset"/>
+			<br />
+			<textarea rows="4" cols="50" name="other" id="reply_section" ></textarea><br />
+			<input type="submit" value="Submit">
+			<input type="reset">
 		</form>	
 			
 	</div>
