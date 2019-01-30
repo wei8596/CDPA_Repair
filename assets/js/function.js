@@ -1,5 +1,6 @@
-var urlParams = [];	// URL parameters
-var lang = "zh";	// zh(default) | en
+var urlParams = [];		// URL parameters
+var userStats = 0;		// 0: logout, 1: login
+var language = "zh";	// zh(default) | en
 const ACTION = {
 	None : -1,
 	Repair : 0,
@@ -28,6 +29,9 @@ var trans = [
 	},{
 		zh:"登入",
 		en:"Sign In"
+	},{
+		zh:"登出",
+		en:"Sign Out"
 	},{
 		zh:"申請維修",
 		en:"Fix Request"
@@ -68,11 +72,27 @@ var trans = [
 ];
 
 /*
+ * show "sign in" or "sign out"
+ */
+function loginOut_ShowText(userStats) {
+	switch(userStats) {
+		case 0:	// stats: logout
+			$("#login a").attr("href", "?action=Login&lang=" + language);
+			$("#login a").text(trans[1][language]);
+			break;
+		case 1:	// stats: login
+			$("#login a").attr("href", "?action=Logout&lang=" + language);
+			$("#login a").text(trans[2][language]);
+			break;
+	}
+}
+
+/*
  * translate the content
  */
-function translate(lang) {
+function translate(language) {
 	var transLang = "";
-	if(lang == "zh") {
+	if(language == "zh") {
 		transLang = "en";
 	}
 	else {
@@ -81,29 +101,28 @@ function translate(lang) {
 	$(document).ready(function() {
 		$("#lang a").attr("href", "?lang=" + transLang);
 		$("#lang a").text(trans[0][transLang]);
-		$("#login a").attr("href", "?action=Login&lang=" + lang);
-		$("#login a").text(trans[1][lang]);
-		$("#repair a").attr("href", "?action=Repair&lang=" + lang);
-		$("#repair a").text(trans[2][lang]);
-		$("#repairstatus a").attr("href", "?action=RepairStatus&lang=" + lang);
-		$("#repairstatus a").text(trans[3][lang]);
-		$("#bannedlist a").attr("href", "?action=BannedList&lang=" + lang);
-		$("#bannedlist a").text(trans[4][lang]);
+		loginOut_ShowText(userStats);
+		$("#repair a").attr("href", "?action=Repair&lang=" + language);
+		$("#repair a").text(trans[3][language]);
+		$("#repairstatus a").attr("href", "?action=RepairStatus&lang=" + language);
+		$("#repairstatus a").text(trans[4][language]);
+		$("#bannedlist a").attr("href", "?action=BannedList&lang=" + language);
+		$("#bannedlist a").text(trans[5][language]);
 		$("#tutorial a").attr("href", "#");
-		$("#tutorial a").text(trans[5][lang]);
-		$("#eazy").attr("href", "?action=Tutorial&type=Eazy&lang=" + lang);
-		$("#eazy").text(trans[6][lang]);
+		$("#tutorial a").text(trans[6][language]);
+		$("#eazy").attr("href", "?action=Tutorial&type=Eazy&lang=" + language);
+		$("#eazy").text(trans[7][language]);
 		$("#lookupIP").attr({href:"http://www.cdpa.nsysu.edu.tw/lookUpIP.php", target:"_blank"});
-		$("#lookupIP").text(trans[7][lang]);
-		$("#queryMAC").attr("href", "?action=Tutorial&type=QueryMACAddress&lang=" + lang);
-		$("#queryMAC").text(trans[8][lang]);
-		$("#queryIPConflict").attr("href", "?action=Tutorial&type=QueryIPConflict&lang=" + lang);
-		$("#queryIPConflict").text(trans[9][lang]);
-		$("#home a").attr("href", "?lang=" + lang);
-		$("#home a").text(trans[10][lang]);
-		$("#content1 p").text(trans[11][lang]);
-		$("#content2 p").text(trans[12][lang]);
-		$("#content3 p").text(trans[13][lang]);
+		$("#lookupIP").text(trans[8][language]);
+		$("#queryMAC").attr("href", "?action=Tutorial&type=QueryMACAddress&lang=" + language);
+		$("#queryMAC").text(trans[9][language]);
+		$("#queryIPConflict").attr("href", "?action=Tutorial&type=QueryIPConflict&lang=" + language);
+		$("#queryIPConflict").text(trans[10][language]);
+		$("#home a").attr("href", "?lang=" + language);
+		$("#home a").text(trans[11][language]);
+		$("#content1 p").text(trans[12][language]);
+		$("#content2 p").text(trans[13][language]);
+		$("#content3 p").text(trans[14][language]);
 	});
 }
 
@@ -124,10 +143,10 @@ function getQueryParam() {
 			// setting flags
 			if(paramsVal[0] == "lang") {
 				if(paramsVal[1] == "zh") {
-					lang = "zh";
+					language = "zh";
 				}
 				else {
-					lang = "en";
+					language = "en";
 				}
 			}
 			else if(paramsVal[0] == "action") {
@@ -188,7 +207,7 @@ function getQueryParam() {
 			case ACTION.Tutorial:
 				switch(type) {
 					case TYPE.Eazy:
-						if(lang == "zh") {
+						if(language == "zh") {
 							$(document).ready(function() {
 								$("#content").load("trouble_shooting.html");
 							});
@@ -255,5 +274,5 @@ function goTop_Check() {
 }
 
 getQueryParam();
-translate(lang);
+translate(language);
 goTop_Check();
