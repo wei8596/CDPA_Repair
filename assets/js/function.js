@@ -22,54 +22,13 @@ const TYPE = {
 };
 var type = TYPE.None;		// 0: Eazy, 1: QueryMACAddress, 2: QueryIPConflict
 
-var trans = [
-	{
-		zh:"中文版",
-		en:"English"
-	},{
-		zh:"登入",
-		en:"Sign In"
-	},{
-		zh:"登出",
-		en:"Sign Out"
-	},{
-		zh:"申請維修",
-		en:"Fix Request"
-	},{
-		zh:"查詢進度",
-		en:"Progress"
-	},{
-		zh:"封鎖列表",
-		en:"Blocked List"
-	},{
-		zh:"各式教學",
-		en:"Tutorial"
-	},{
-		zh:"簡易問題排除",
-		en:"Troubleshooting"
-	},{
-		zh:"查詢IP分配表",
-		en:"IP Distribution"
-	},{
-		zh:"查詢網路卡號",
-		en:"MAC Address"
-	},{
-		zh:"查詢IP佔用卡號",
-		en:"IP Conflict"
-	},{
-		zh:"回到首頁",
-		en:"Home"
-	},{
-		zh:"請尊重智慧財產權，勿下載版權保護軟體。",
-		en:"Please respect the intellectual property rights, do not download copyright protection software."
-	},{
-		zh:"若您無法正確瀏覽本系統，請嘗試使用其他瀏覽器，謝謝。",
-		en:"If you are not able to correctly viewing the web page, please change your Browser, thank you."
-	},{
-		zh:"若報修後超過兩週以上無人處理，請優先私訊CDPA的Facebook粉絲專頁！",
-		en:""
-	}
-];
+/*
+ * get the dictionary from trans.json
+ */
+var trans = {};
+$.getJSON("assets/json/trans.json", function(data) {
+	trans = data;
+});
 
 /*
  * show "sign in" or "sign out"
@@ -78,11 +37,11 @@ function loginOut_ShowText(userStats) {
 	switch(userStats) {
 		case 0:	// stats: logout
 			$("#login a").attr("href", "?action=Login&lang=" + language);
-			$("#login a").text(trans[1][language]);
+			$("#login a").text(trans[language]["LOGIN"]);
 			break;
 		case 1:	// stats: login
 			$("#login a").attr("href", "?action=Logout&lang=" + language);
-			$("#login a").text(trans[2][language]);
+			$("#login a").text(trans[language]["LOGOUT"]);
 			break;
 	}
 }
@@ -100,29 +59,29 @@ function translate(language) {
 	}
 	$(document).ready(function() {
 		$("#lang a").attr("href", "?lang=" + transLang);
-		$("#lang a").text(trans[0][transLang]);
+		$("#lang a").text(trans[transLang]["LANG"]);
 		loginOut_ShowText(userStats);
 		$("#repair a").attr("href", "?action=Repair&lang=" + language);
-		$("#repair a").text(trans[3][language]);
+		$("#repair a").text(trans[language]["REQUEST"]);
 		$("#repairstatus a").attr("href", "?action=RepairStatus&lang=" + language);
-		$("#repairstatus a").text(trans[4][language]);
+		$("#repairstatus a").text(trans[language]["PROGRESS"]);
 		$("#bannedlist a").attr("href", "?action=BannedList&lang=" + language);
-		$("#bannedlist a").text(trans[5][language]);
+		$("#bannedlist a").text(trans[language]["BLOCKLIST"]);
 		$("#tutorial a").attr("href", "#");
-		$("#tutorial a").text(trans[6][language]);
+		$("#tutorial a").text(trans[language]["TUTORIAL"]);
 		$("#eazy").attr("href", "?action=Tutorial&type=Eazy&lang=" + language);
-		$("#eazy").text(trans[7][language]);
+		$("#eazy").text(trans[language]["TROUBLE"]);
 		$("#lookupIP").attr({href:"http://www.cdpa.nsysu.edu.tw/lookUpIP.php", target:"_blank"});
-		$("#lookupIP").text(trans[8][language]);
+		$("#lookupIP").text(trans[language]["IPDIST"]);
 		$("#queryMAC").attr("href", "?action=Tutorial&type=QueryMACAddress&lang=" + language);
-		$("#queryMAC").text(trans[9][language]);
+		$("#queryMAC").text(trans[language]["MACADDR"]);
 		$("#queryIPConflict").attr("href", "?action=Tutorial&type=QueryIPConflict&lang=" + language);
-		$("#queryIPConflict").text(trans[10][language]);
+		$("#queryIPConflict").text(trans[language]["CONFLICT"]);
 		$("#home a").attr("href", "?lang=" + language);
-		$("#home a").text(trans[11][language]);
-		$("#content1 p").text(trans[12][language]);
-		$("#content2 p").text(trans[13][language]);
-		$("#content3 p").text(trans[14][language]);
+		$("#home a").text(trans[language]["HOME"]);
+		$("#content1 p").text(trans[language]["NOTICE1"]);
+		$("#content2 p").text(trans[language]["NOTICE2"]);
+		$("#content3 p").text(trans[language]["NOTICE3"]);
 	});
 }
 
