@@ -22,13 +22,8 @@ const TYPE = {
 };
 var type = TYPE.None;		// 0: Eazy, 1: QueryMACAddress, 2: QueryIPConflict
 
-/*
- * get the dictionary from trans.json
- */
+// dictionary
 var trans = {};
-$.getJSON("assets/json/trans.json", function(data) {
-	trans = data;
-});
 
 /*
  * show "sign in" or "sign out"
@@ -233,5 +228,11 @@ function goTop_Check() {
 }
 
 getQueryParam();
-translate(language);
+/*
+ * get the dictionary from trans.json
+ */
+$.getJSON("https://api.github.com/gists/76f401c40cec86a1d05ab652fbfc72e3", function(data) {
+	trans = $.parseJSON(data["files"]["trans.json"].content);
+	translate(language);
+});
 goTop_Check();
