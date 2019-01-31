@@ -1,6 +1,6 @@
 // JavaScript Document
 /***
-	元帳號密碼及form check 轉移至 account.js
+	原帳號密碼及form check 轉移至 account.js
 	此js為搭配login.html 之使用
     1.0		190127		by imgc	
 	require jquery.js
