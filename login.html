@@ -2,6 +2,7 @@
 	login page
     1.0		190118		by imgc
     1.1		190121		重新調整表單
+    1.2		190201		修改id
 -->
 <!DOCTYPE html>
 <html>
@@ -15,28 +16,28 @@
 <div id="content-1" class="box">
     <div id="loginController"><!-- 填表區域 -->
     	<h3>Log In</h3>
-        <form id="loginForm" action="" method="post" onInput="checkForm('login',this)"  onSubmit="return submitForm('login',this)"><!-- 登入表單 -->
+        <form id="loginForm" action=" /**登入**/ " method="post" onSubmit="return submitForm('login',this)"><!-- 登入表單 -->
             <table >
                 <tr>
-                    <td><label>帳號 account</label></td>
+                    <td><label id="labal_account">帳號 account</label></td>
                     <td><input name="account" type="text" required="required"/></td>
                 </tr>
                 <tr>
-                    <td><label>密碼 password</label></td>
-                    <td><input name="password" type="password" pattern="[0-9a-zA-Z]{4,32}" required="required"/></td>
+                    <td><label id="label_password">密碼 password</label></td>
+                    <td><input name="password" type="password" required="required"/></td>
                 </tr>
                 <tr>
                     <td></td>
-                    <td><input name="submit" type="submit" value="登入/sign in"/></td>
+                    <td><input id="login_submit" name="submit" type="submit" value="登入/log in"/></td>
                 </tr>
             </table>
 	</form>
         <span id="info" style="color:red">&nbsp;</span>
     </div>
     <div>
-        <a id="register" href="">註冊 Register</a>
+        <a id="link_register" href="">註冊 Register</a>
         <br/>
-        <a id="forget" href="">忘記密碼 Forget password?</a>
+        <a id="link_forget" href="">忘記密碼 Forget password?</a>
     </div>
 </div>
 <div id="content-2" class="box">

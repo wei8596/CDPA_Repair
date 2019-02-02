@@ -72,15 +72,6 @@ const INFO = {	//訊息文本
 
 var info = INFO.ZH;	//輸出提示之來源
 
-var pattern = /lang=[^&#]*/i;
-var lang = pattern.exec(location.search);
-if (lang == "lang=en"){//判斷語言
-	info = INFO.EN;
-}
-else{
-	info = INFO.ZH;
-}
-
 //----
 //func
 //----
@@ -88,6 +79,17 @@ else{
 function hash(x){
 	//雜湊手段 +-保障密碼隱私
 	return $.md5(x);
+}
+
+function setFormLang(){//確認表格語系 
+	var pattern = /lang=[^&#]*/i;
+	var lang = pattern.exec(location.search);
+	if (lang == "lang=en"){//判斷語言
+		info = INFO.EN;
+	}
+	else{
+		info = INFO.ZH;
+	}
 }
 
 var CHECK = {//字串檢測
@@ -176,11 +178,11 @@ function submitForm(opt, form){
 function checkForm_login(form){
 	//check form for login page
 	if(!CHECK.ACCOUNT(form.elements.namedItem('account').value)){
-		document.getElementById('info').innerHTML = CHECK.message;
+		//document.getElementById('info').innerHTML = CHECK.message;
 		return false;
 	}
 	if(!CHECK.PASSWORD(form.elements.namedItem('password').value)){
-		document.getElementById('info').innerHTML = CHECK.message;
+		//document.getElementById('info').innerHTML = CHECK.message;
 		return false;
 	}
 	document.getElementById('info').innerHTML = "&nbsp;";
@@ -208,4 +210,10 @@ function checkForm_reg(form){
 	document.getElementById('info').innerHTML = "&nbsp;";
 	return true;
 }
+
+
+//-----
+//run
+//-----
+setFormLang();
 

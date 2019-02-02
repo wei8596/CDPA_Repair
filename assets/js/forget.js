@@ -2,6 +2,7 @@
 /***
 	此js為搭配forget.html 之使用
     1.0		190129		by imgc	
+	1.1		190201		修改id 及 function化 描述注入 local化部分變數
 	require jquery.js
 ***/
 const DESCRIPTION = {
@@ -14,20 +15,26 @@ const DESCRIPTION = {
 	ERR : 'lang is unexpected'
 }
 
-var pra = location.search;
-var pattern = /lang=[^&#]*/i;
-var lang = pattern.exec(pra);
-if(lang == null){
-	lang = "lang=zh";
+function forgetPageSet(){
+	var pra = location.search;
+	var pattern = /lang=[^&#]*/i;
+	var lang = pattern.exec(pra);
+	if(lang == null){
+		lang = "lang=zh";
+	}
+	
+	if(lang == "lang=zh"){
+		document.getElementById('description').innerHTML = DESCRIPTION.ZH;
+	}
+	else if (lang == "lang=en"){
+		document.getElementById('description').innerHTML = DESCRIPTION.EN;
+	}
+	else{
+		document.getElementById('description').innerHTML = DESCRIPTION.ERR + lang;
+	}
 }
 
-if(lang == "lang=zh"){
-	document.getElementById('description').innerHTML = DESCRIPTION.ZH;
-}
-else if (lang == "lang=en"){
-	document.getElementById('description').innerHTML = DESCRIPTION.EN;
-}
-else{
-	document.getElementById('description').innerHTML = DESCRIPTION.ERR + lang;
-}
-
+//-----
+//run
+//-----
+forgetPageSet();

@@ -2,6 +2,7 @@
 	register page
     1.0		190121		by imgc
     1.1		190121		重新調整表
+    
 -->
 <!DOCTYPE html>
 <html>
@@ -18,25 +19,25 @@
         <form id="registerForm" action="" method="post" onInput="checkForm('register',this)" onSubmit="return submitForm('register',this)"><!-- 註冊表單 -->
             <table >
             	<tr>
-                    <td><label>帳號 account</label></td>
+                    <td><label id="labal_account">帳號 account</label></td>
                     <td><input name="account" type="text" placeholder="your student id" required="required"/></td>
                 </tr>
                 <tr>
-                    <td><label>信箱 e-mail</label></td>
+                    <td><label  id="labal_mailbox">信箱 e-mail</label></td>
                     <td><input name="mailbox" type="text" required="required"/></td>
                 </tr>
                 <tr>
-                    <td><label>密碼 password</label></td>
+                    <td><label id="label_password">密碼 password</label></td>
                     <td><input name="password" type="password" pattern="[0-9a-zA-Z]{4,32}" placeholder="only contain 0-9,a-z or A-Z" required="required"/></td>
                 </tr>
                 <tr>
-                    <td><label>密碼確認 verify </label></td><!-- password double check -->
+                    <td><label id="labal_verify">密碼確認 verify </label></td><!-- password double check -->
                     <td><input name="verify" type="password" pattern="[0-9a-zA-Z]{0,32}" placeholder="retype your password"/></td>
                 </tr>
 
                 <tr>
                     <td></td>
-                    <td><input name="submit" type="submit" value="送出/send"/></td>
+                    <td><input id="register_submit" name="submit" type="submit" value="送出/send"/></td>
                 </tr>
             </table>
         </form>

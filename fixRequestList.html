@@ -1,0 +1,166 @@
+<!--
+	報修清單 此處僅實作table 及 連結相關應用
+    1.0		190202		by imgc
+-->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>fix request list</title>
+<style>
+table{
+	width:640px;
+	color:black;
+	background-color:white;
+	border: 1px solid DarkGray;
+}
+th{
+	border-top: 1px solid DarkGray;
+	border-bottom: 1px solid DarkGray;
+}
+</style>
+</head>
+
+<body style="color:#f5f5f5">
+
+<form id="plugForm" action="" method="post" onSubmit="return plugFixRequestList()" ><!-- plug option -->
+	<table id="dormPlug">
+    	<thead>
+        	<tr>
+            	<th colspan="3">dorm</th>
+            </tr>
+        </thead>
+        <tbody>
+        	<tr>
+            	<td>
+                	<label>翠亨</label>
+                </td>
+                <td>
+                	<input type="checkbox" value="70" name="D_7all">全選</input>
+                    <input type="checkbox" value="-70" name="D_7not">全否</input>
+                </td>
+                <td>
+                	<input type="checkbox" value="71" name="D_A">A</input>
+                    <input type="checkbox" value="72" name="D_B">B</input>
+                    <input type="checkbox" value="73" name="D_C">C</input>
+                    <input type="checkbox" value="74" name="D_D">D</input>
+                    <input type="checkbox" value="75" name="D_E">E</input>
+                    <br />
+                    <input type="checkbox" value="76" name="D_F">F</input>
+                    <input type="checkbox" value="77" name="D_G">G</input>
+                    <input type="checkbox" value="78" name="D_H">H</input>
+                    <input type="checkbox" value="79" name="D_L">L</input>
+                </td>
+            </tr>
+        	<tr>
+            	<td>
+                	<label>武嶺</label>
+                </td>
+                <td>
+                	<input type="checkbox" value="80" name="D_8all">全選</input>
+                    <input type="checkbox" value="-80" name="D_8not">全否</input>
+                </td>
+                <td>
+                	<input type="checkbox" value="81" name="D_1">武1</input>
+                    <input type="checkbox" value="82" name="D_2">武2</input>
+                    <input type="checkbox" value="83" name="D_3">武3</input>
+                    <input type="checkbox" value="84" name="D_4">武4</input>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <input type="submit" value="Plug"/>
+</form>
+
+<span id="info" style="color:red">&nbsp;</span><!-- view some operation message -->
+
+<table id="viewList"><!-- view -->
+	<thead><!-- title -->
+    	<tr>
+            <th onClick="sorter.sortBy('seq')"> Seq </th>
+            <th onClick="sorter.sortBy('dorm')"> Dorm </th>
+            <th onClick="sorter.sortBy('room')"> Room-Bed </th>
+            <th onClick="sorter.sortBy('update')"> Update </th>
+            <th onClick="sorter.sortBy('poster')"> Poster </th>
+            <th onClick="sorter.sortBy('state')"> State </th>
+            <th> Link </th>
+        </tr>
+    </thead>
+    <tbody><!-- **該表由後端填入 按下述格式填入innerHtml** -->
+    	<tr>
+        	<td> **0報修單編號** </td>
+            <td> **1棟別** </td>
+            <td> **2房號-床位** </td>
+            <td> **3上次更新時間** </td>
+            <td> **4創建者** </td>
+            <td> **5狀態** </td>
+            <td> **6連結** </td>
+        </tr>
+    </tbody>
+</table>
+
+<!-- **以下區塊為 前端測試 區塊 注入後端需刪除** -->
+<script type="text/javascript">
+	var data = {
+		a : {
+			Seq : 0,
+			Dorm : 'A',
+			RoomBed : '601-1',
+			Update : new Date(2018,12,23),
+			Poster : 'poster1',
+			State : 1,
+			Link : '<a href="">linkA</a>'
+		},
+		b : {
+			Seq : 3,
+			Dorm : '1',
+			RoomBed : '302-2',
+			Update : new Date(2019,01,11),
+			Poster : 'baga9',
+			State : 0,
+			Link : '<a href="">linkB</a>'
+		},
+		c : {
+			Seq : 4,
+			Dorm : '1',
+			RoomBed : '506-1',
+			Update : new Date(2019,01,8),
+			Poster : 'hentai0',
+			State : 1,
+			Link : '<a href="">linkC</a>'
+		},
+		d : {
+			Seq : 5,
+			Dorm : 'A',
+			RoomBed : '506-2',
+			Update : new Date(2019,01,8).toDateString(),
+			Poster : 'db2',
+			State : 1,
+			Link : '<a href="">linkD</a>'
+		}
+	}
+	function createRow(x){
+		var row = "";
+		for(index in x){
+			row += "<td>" + x[index] + "</td>";
+		}
+		return "<tr>" + row + "</tr>";
+	}
+	function createRows(xs){
+		var rows = "";
+		for(index in xs){
+			rows += createRow(xs[index]);
+		}
+		return rows;
+	}
+	var table = document.getElementById('viewList');
+	var tableBody = table.getElementsByTagName('tbody');
+	tableBody.item(0).innerHTML = createRows(data);
+</script>
+<!-- **以上區塊為 前端測試用 注入後端需刪除** -->
+
+<script type="text/javascript" src="assets/js/sorter.js"></script>
+<script type="text/javascript" src="assets/js/fixRequestList.js"></script>
+
+</body>
+</html>
