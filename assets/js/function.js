@@ -10,7 +10,8 @@ const ACTION = {
 	Login : 4,		//登入
 	Register : 5,	//註冊
 	Forget : 6,		//忘記密碼
-	Home : 7		//登入成功後首頁
+	Home : 7,		//登入成功後首頁
+	Logout : 8
 };
 var action = ACTION.None;	// 0: Repair, 1: RepairStatus, 2: BannedList, 3: Tutorial, ...參照ACTION
 
@@ -83,9 +84,11 @@ function translate(language) {
 /*
  * get URL parameters
  */
-function getQueryParam() {
+function getQueryParam(is_authenticated) {
 	var url = location.search;
 	var query, getParams, paramsVal;
+	
+	userStats = is_authenticated
 	
 	if(url.indexOf("?") != -1) {
 		query = url.split("?")[1];
@@ -129,6 +132,9 @@ function getQueryParam() {
 					case "Home":
 						action = ACTION.Home;
 						break;
+					case "Logout":
+						action = ACTION.Logout;
+						break;
 				}
 			}
 			else if(paramsVal[0] == "type") {
@@ -151,7 +157,9 @@ function getQueryParam() {
 				});
 				break;
 			case ACTION.RepairStatus:
-				//
+				$(document).ready(function() {
+					$("#content").load("form_status.html");
+				});
 				break;
 			case ACTION.BannedList:
 				$(document).ready(function() {
@@ -204,6 +212,11 @@ function getQueryParam() {
 					$("#content").load("home.html");
 				});
 				break;
+			case ACTION.Logout:
+				$(document).ready(function() {
+					$("#content").load("logout.html");
+				});
+				break;
 		}
 	}
 }
@@ -227,7 +240,7 @@ function goTop_Check() {
 	});
 }
 
-getQueryParam();
+getQueryParam(userStats);
 /*
  * get the dictionary from trans.json
  */
