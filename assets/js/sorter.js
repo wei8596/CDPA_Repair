@@ -51,12 +51,12 @@ function SORTER(config) {//create a sorter object
             this.currentKey = opt;
         }
 
-        var keyCellIndex = this.sortConfig[this.currentKey].columnIndex;
+		var keyFunc = this.sortConfig[this.currentKey].keyFunc;
         var funcSort = (this.sortConfig[this.currentKey].compare
             ? this.sortConfig[this.currentKey].compare//if have set compare method
             : COMPARE.TEXT	//default compare method(slow
         )[this.currentOrder];
-        doSort.apply(this, [keyCellIndex, funcSort]);
+        doSort.apply(this, [keyFunc, funcSort]);
 		if(this.messenger){
 			this.messenger.innerHTML = '&nbsp;';
 		}
@@ -79,14 +79,14 @@ function SORTER(config) {//create a sorter object
         return rows;
     }
 
-    function doSort(keyCellIndex, sortFunc) {
+    function doSort(keyFunc, sortFunc) {
         var rows = getRows.call(this);
         var pairs = [];
         for (index in rows) {
 			var row = rows[index];
 			//alert(typeof row);
 			if(typeof row == 'object'){// row is real row object
-				var keyValue = row.getElementsByTagName('td')[keyCellIndex].firstChild.nodeValue;
+				var keyValue = keyFunc(row.getElementsByTagName('td'));
 				pairs[index] = {
 					'key': keyValue,
 					'content': row
