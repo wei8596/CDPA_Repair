@@ -2,7 +2,6 @@
 /***
     1.0		190202		by imgc
 	2.0		190206		完成篩選功能
-	required sorter.js
 	required imgcClass.js
 ***/
 const viewList = {// view list config
@@ -15,7 +14,8 @@ const viewList = {// view list config
 		poster : 4,
 		state : 5
 	},
-	tbodyColor : ['NavajoWhite','MistyRose']
+	tbodyColor : ['NavajoWhite','MistyRose'],
+	messenger : document.getElementById("info")
 };
 
 var filter ={		//篩選
@@ -59,6 +59,9 @@ function getFilter(){//reset filter
 }
 
 function paintViewList(){
+	if(viewList.messenger){
+		viewList.messenger.innerHTML = 'wait for paintViewList()...';
+	}
 	var table = document.getElementById(viewList.id);
 	var filter = getFilter();
 	var tbody = table.getElementsByTagName("tbody").item(0);
@@ -81,6 +84,10 @@ function paintViewList(){
 		else{
 			row.style.display = 'none';
 		}
+	}
+	
+	if(viewList.messenger){
+		viewList.messenger.innerHTML = '&nbsp;';
 	}
 }
 
