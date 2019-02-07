@@ -149,7 +149,7 @@ function COLLAPSE(config){//create a collapse box object
 		}
 	};
 	
-	this.collapse = function(){	// set click event
+	this.collapse = function(){	// change collapse state
 		switch(this.state){
 			case COLLAPSE_STATE.off:
 				this.state = COLLAPSE_STATE.on;
@@ -163,6 +163,11 @@ function COLLAPSE(config){//create a collapse box object
 				break;
 		}
 	};
+	
+	this.title.onclick = function(here){return function(){// set collapse event
+		here.collapse();
+		return true;
+	}}(this);
 	
 	this.setView();		//initial view
 }

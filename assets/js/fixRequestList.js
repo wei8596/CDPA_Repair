@@ -2,6 +2,7 @@
 /***
     1.0		190202		by imgc
 	2.0		190206		完成篩選功能
+	2.1		190206		添加state篩選
 	required imgcClass.js
 ***/
 const viewList = {// view list config
@@ -31,8 +32,31 @@ var filter ={		//篩選
 		function(row){	//dorm filter
 			var keyValue = row.getElementsByTagName('td')[viewList.column.dorm].firstChild.nodeValue;
 			return filter.dorm[keyValue];
+		},
+		function(row){	//state filter
+			var keyValue = row.getElementsByTagName('td')[viewList.column.state].firstChild.nodeValue;
+			for(index in filter.stateTag){
+				if(filter.state[filter.stateTag[index]].test(keyValue) == true){
+					return true;
+				}
+			}
+			return false;
 		}
 	],
+	setting : function(){// set filter 	**欲添加篩選功能請修改此處**
+		for(index in filter.dormTag){	//create dorm arguments in filter
+			filter.dorm[filter.dormTag[index]] = document.getElementsByName(filter.dormTag[index]).item(0).checked;
+		}
+		for(index in filter.stateTag){	//create dorm arguments in filter
+			var option = document.getElementsByName(filter.stateTag[index]).item(0);
+			if(option.checked == true){
+				filter.state[filter.stateTag[index]] = new RegExp(option.value);
+			}
+			else{
+				filter.state[filter.stateTag[index]] = /^$/;//null string match
+			}
+		}
+	},
 	dormTag : [		//宿舍name參數
 		"A",
 		"B",
@@ -49,12 +73,16 @@ var filter ={		//篩選
 		"four"
 	],
 	dorm : {},		//method dorm filter 保留參數
+	stateTag : [		//state name 參數
+		"stateFinish",
+		"stateInProc",
+		"stateNotProc"
+	],
+	state : {},				//method state filter 保留參數
 }
 
 function getFilter(){//reset filter
-	for(index in filter.dormTag){
-		filter.dorm[filter.dormTag[index]] = document.getElementsByName(filter.dormTag[index]).item(0).checked;
-	}
+	filter.setting();
 	return filter;
 }
 
@@ -135,13 +163,16 @@ var sorter = new SORTER({//viewList排序器
 	},
 	"messenger" : document.getElementById("info")
 });
-
-var filterBox = new COLLAPSE({//create filterBox COLLAPSE function
-	"box" : "filterBox",	//box id
-	'title' : null,
-	'content': null,
-	"state" : COLLAPSE_STATE.off	//not collapse
-});
+var collapseBoxes = document.getElementsByClassName('collapseBox');//set all collapseBox
+for(index in collapseBoxes){
+	if(typeof collapseBoxes[index] != 'object'){
+		break;
+	}
+	new COLLAPSE({
+		"box" : collapseBoxes[index],
+		"state" : COLLAPSE_STATE.on	//collapse
+	});
+}
 
 var checkBlocks = document.getElementsByClassName('checkBlock');//set all checkBlock
 for(index in checkBlocks){
