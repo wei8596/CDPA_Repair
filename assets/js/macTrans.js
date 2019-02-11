@@ -9,7 +9,7 @@ $(document).ready(function() {
 	  "en": {
 		"WIN1": "Press the Win + R keys on your keyboard. Then, type [ cmd ] and press Enter or click/tap OK.",
 		"WIN2": "Execute the command: [ ipconfig /all ].<br/>The first outlines the configuration of the IP protocol on the computer.<br/>After that, each networking device appears in sequence, offering a wealth of diagnostic information including the MAC address (Physical Address).",
-		"WIN3": "Right-click the title bar &gt; Click Mark",
+		"WIN3": "Right-click the title bar &gt; Click Edit &gt; Click Mark",
 		"WIN4": "Highlight what you want to copy and then right-click again to copy the text"
 	  }
 	}
