@@ -11,6 +11,7 @@
     <div id="forgetController"><!-- 填表區域 -->
     	<h3>Sign Up</h3>
         <form id="forgetForm"  action=" /**忘記密碼**/ " method="post" onInput="checkForm('forget',this)" onSubmit="return submitForm('forget',this)"><!-- 註冊表單 -->
+			<input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
             <table >
             	<tr>
                     <td><label id="labal_account">帳號 account</label></td>
@@ -51,9 +52,10 @@
 <!--
 script
 -->
-<script type="text/javascript" src="assets/js/jquery-3.3.1.min.js"></script>
-<script type="text/javascript" src="assets/js/md5.js"></script>
-<script type="text/javascript" src="assets/js/account.js"></script>
-<script type="text/javascript" src="assets/js/forget.js"></script>
+		<script type="text/javascript" src="assets/js/jquery-3.3.1.min.js"></script>
+        <script type="text/javascript" src="assets/js/sha256.min.js"></script>
+		<script type="text/javascript" src="assets/js/md5.js"></script>
+		<script type="text/javascript" src="assets/js/account.js"></script>
+		<script type="text/javascript" src="assets/js/login.js"></script>
 </body>
 </html>

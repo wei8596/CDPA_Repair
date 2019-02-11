@@ -3,12 +3,10 @@
     1.0		190202		by imgc
     2.0		190206		完成篩選
     2.1		190206		添加state篩選
+    2.2		190209		修正後端注入格式 fix filter bug
 -->
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="utf-8">
-<title>fix request list</title>
+{% extends 'admin/master.html' %}
+{% block body %}
 <style>
 table{
 	width:640px;
@@ -20,7 +18,6 @@ th{
 	border-top: 1px solid DarkGray;
 	border-bottom: 1px solid DarkGray;
 }
-
 .collapseBox{
 	min-width: 640px;
 	display:inline-block;
@@ -34,7 +31,6 @@ th{
 	background-color: white;
 	padding: 5px;
 }
-
 .checkBlock{
 }
 .checkBlock .selectAll{
@@ -44,9 +40,6 @@ th{
 .checkBlock .selectOption{
 }
 </style>
-</head>
-
-<body style="background-color:#f5f5f5">
 <div class="collapseBox" id="filterBox">
 	<div class="title">
     	Filter
@@ -138,90 +131,30 @@ th{
             <th> Link </th>
         </tr>
     </thead>
-    <tbody><!-- **該表由後端填入 按下述格式填入innerHtml** -->
-    	<tr>
-        	<td> **0報修單編號** </td>
-            <td> **1棟別** </td>
-            <td> **2房號-床位** </td>
-            <td> **3上次更新時間** </td>
-            <td> **4創建者** </td>
-            <td> **5狀態** </td>
-            <td> **6連結** </td>
-        </tr>
+    </tbody><!-- **該表由後端填入 按下述格式填入innerHtml** -->
+	{% for i in range(totalForm) %}
+						<tr>
+							<td> {{ list[i]['ID'] }} </td>
+							<td> {{ list[i]['dorm'] }} </td>
+							<td> {{ list[i]['roomNum'] }}-{{ list[i]['bedNum'] }} </td>
+							<td> {{ list[i]['updateTime'] }} </td>
+							<td> {{ list[i]['createUser'] }} </td>
+							
+							{% if list[i]['status'] == "處理完畢/Finished" %}
+								<td style="color:green">{{ list[i]['status'] }}</td>
+							{% elif list[i]['status'] == "處理中/In process" %}
+								<td style="color:orange">{{ list[i]['status'] }}</td>
+							{% else %}
+								<td style="color:red">{{ list[i]['status'] }}</td>
+							{% endif %}
+							
+							<td> <a href={{ url_for('.repair', id=list[i]['ID']) }} >前往處理</a> </td>
+						</tr>
+	{% endfor %}
     </tbody>
 </table>
-
-<!-- **以下區塊為 前端測試 區塊 注入後端需刪除** -->
-<script type="text/javascript">
-	var data = {
-		a : {
-			Seq : 0,
-			Dorm : 'A',
-			RoomBed : '601-1',
-			Update : new Date(2018,12,23).toDateString(),
-			Poster : 'poster1',
-			State : '處理中/In process',
-			Link : '<a href="">linkA</a>'
-		},
-		b : {
-			Seq : 3,
-			Dorm : 'one',
-			RoomBed : '302-2',
-			Update : new Date(2019,01,11).toDateString(),
-			Poster : 'baga9',
-			State : '未處理/Not process yet',
-			Link : '<a href="">linkB</a>'
-		},
-		c : {
-			Seq : 4,
-			Dorm : 'one',
-			RoomBed : '506-1',
-			Update : new Date(2019,01,8).toDateString(),
-			Poster : 'hentai0',
-			State : '處理中/In process',
-			Link : '<a href="">linkC</a>'
-		},
-		d : {
-			Seq : 5,
-			Dorm : 'A',
-			RoomBed : '506-2',
-			Update : new Date(2019,01,8).toDateString(),
-			Poster : 'db2',
-			State : '處理中/In process',
-			Link : '<a href="">linkD</a>'
-		},
-		e : {
-			Seq : 12,
-			Dorm : 'four',
-			RoomBed : '506-1',
-			Update : new Date(2019,02,8).toDateString(),
-			Poster : 'db2',
-			State : '處理中/In process',
-			Link : '<a href="">linkE</a>'
-		}
-	}
-	function createRow(x){
-		var row = "";
-		for(index in x){
-			row += "<td>" + x[index] + "</td>";
-		}
-		return "<tr>" + row + "</tr>";
-	}
-	function createRows(xs){
-		var rows = "";
-		for(index in xs){
-			rows += createRow(xs[index]);
-		}
-		return rows;
-	}
-	var table = document.getElementById('viewList');
-	var tableBody = table.getElementsByTagName('tbody');
-	tableBody.item(0).innerHTML = createRows(data);
-</script>
-<!-- **以上區塊為 前端測試用 注入後端需刪除** -->
-
 <script type="text/javascript" src="assets/js/imgcClass.js"></script>
 <script type="text/javascript" src="assets/js/fixRequestList.js"></script>
 
-</body>
-</html>
+{% endblock %}
+

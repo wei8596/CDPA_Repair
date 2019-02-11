@@ -3,6 +3,7 @@
     1.0		190118		by imgc
     1.1		190121		重新調整表單
     1.2		190201		修改id
+    1.3		190210		添加sha256.min.js
 -->
 <!DOCTYPE html>
 <html>
@@ -10,14 +11,18 @@
 <meta charset="utf-8"/>
 <title>Sign In</title>
 <link rel="stylesheet" type="text/css" href="assets/css/imgc.css"></link>
+<!-- CSS -->
+		<link rel="stylesheet" href="assets/css/bootstrap.min.css"/>
+		<link rel="stylesheet" href="assets/css/fontawesome.min.css"/>
+		<link rel="stylesheet" href="assets/css/main.css"/>
 </head>
 
 <body style="background-color:#f5f5f5;">
-<div id="content-1" class="box">
-    <div id="loginController"><!-- 填表區域 -->
+	<div id="loginController"><!-- 填表區域 -->
     	<h3>Log In</h3>
-        <form id="loginForm" action=" /**登入**/ " method="post" onSubmit="return submitForm('login',this)"><!-- 登入表單 -->
-            <table >
+		<form id="loginForm" action="" method="post" onSubmit="return submitForm('login',this)"><!-- 登入表單 -->
+           	<input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/> 
+			<table>
                 <tr>
                     <td><label id="labal_account">帳號 account</label></td>
                     <td><input name="account" type="text" required="required"/></td>
@@ -35,9 +40,9 @@
         <span id="info" style="color:red">&nbsp;</span>
     </div>
     <div>
-        <a id="link_register" href="">註冊 Register</a>
+		<a id="link_register" href={{ url_for("regist_request") }}>註冊 Register</a>
         <br/>
-        <a id="link_forget" href="">忘記密碼 Forget password?</a>
+		<a id="link_forget" href={{ url_for("forget") }}>忘記密碼 Forget password?</a>
     </div>
 </div>
 <div id="content-2" class="box">
@@ -52,9 +57,11 @@
 <!--
 script
 -->
-<script type="text/javascript" src="assets/js/jquery-3.3.1.min.js"></script>
-<script type="text/javascript" src="assets/js/md5.js"></script>
-<script type="text/javascript" src="assets/js/account.js"></script>
-<script type="text/javascript" src="assets/js/login.js"></script>
+		<script type="text/javascript" src="assets/js/jquery-3.3.1.min.js"></script>
+        <script type="text/javascript" src="assets/js/sha256.min.js"></script>
+		<script type="text/javascript" src="assets/js/md5.js"></script>
+		<script type="text/javascript" src="assets/js/account.js"></script>
+		<script type="text/javascript" src="assets/js/login.js"></script>
+
 </body>
 </html>

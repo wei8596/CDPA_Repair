@@ -238,3 +238,4 @@ function CHECKBLOCK(config){//create a check block object
 		}}(this);
 	}
 }
+
